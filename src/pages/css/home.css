@@ -1,0 +1,39 @@
+.row {
+    margin: 0;
+}
+
+.feature {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.feature h1 {
+    font-weight: 700;
+}
+
+.feature span {
+    color: rgb(52, 242, 52);
+}
+
+
+.featureText {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.featureText h5 {
+    font-weight: 1000;
+    color: rgb(179, 179, 179);
+    letter-spacing: .1em;
+}
+
+.albumContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.albumsBox {
+    background-color: red;
+}
