@@ -30,10 +30,30 @@
 }
 
 .albumContainer {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
 }
 
-.albumsBox {
-    background-color: red;
+.album {
+    width: 200px;
+    height: 250px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.album img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
+}
+
+.album p {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+}
+
+.album .artist {
+    color: rgb(164, 161, 161);
 }

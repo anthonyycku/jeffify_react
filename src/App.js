@@ -24,6 +24,7 @@ function App() {
             <Route path="/home" component={Home} />
             <Route path="/playlist" component={Playlist} />
             <Route path="/search" component={Search} />
+            {/* <Route path="/createlist" component={ } /> */}
             <Redirect from="/" to="/home" />
           </Switch>
         </div>

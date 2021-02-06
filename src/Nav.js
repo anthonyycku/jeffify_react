@@ -35,7 +35,7 @@ export default function Nav(props) {
                         <li onClick={() => props.setPage("home")} style={homeStyle(props.page)}><Link className="link" to="/home"><i class="fas fa-home-lg-alt"></i> Home</Link></li>
                         <li onClick={() => props.setPage("playlist")} style={playlistStyle(props.page)}><Link className="link" to="/playlist"><i class="fal fa-books"></i> Library</Link></li>
                         <hr style={{ color: "white" }} />
-                        <li><Link className="link playlist">Create Playlist</Link></li>
+                        <li><Link to="/createlist" className="link playlist">Create Playlist</Link></li>
                     </ul>
                 </nav>
             </div>
