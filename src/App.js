@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import Home from "./pages/Home";
 import Playlist from "./pages/Playlist";
 import Search from "./pages/Search";
+import Songs from "./pages/Songs";
 import Nav from "./Nav";
 import Audiobox from "./Audiobox"
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/home" component={Home} />
             <Route path="/playlist" component={Playlist} />
             <Route path="/search" component={Search} />
+            <Route path="/songs" component={Songs} />
             {/* <Route path="/createlist" component={ } /> */}
             <Redirect from="/" to="/home" />
           </Switch>

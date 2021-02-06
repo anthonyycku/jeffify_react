@@ -1,0 +1,58 @@
+.albumHeader {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.albumPic {
+    display: flex;
+}
+
+.albumPic .albumInfo {
+    padding-left: 20px;
+}
+
+.albumPic h1 {
+    font-weight: 700;
+}
+
+.albumPic h4,
+h5 {
+    color: rgb(174, 174, 174);
+    font-weight: 700;
+}
+
+.albumPic img {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+    display: inline-block;
+}
+
+.songRow {
+    margin-bottom: 10px;
+}
+
+.songRow {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.song {
+    display: flex;
+    padding-top: 10px;
+    height: 60px;
+}
+
+.song i:hover {
+    color: rgb(86, 249, 86);
+}
+
+.song span {
+    user-select: none;
+}
+
+.song:hover {
+    background-color: rgba(0, 0, 0, 0.55);
+}

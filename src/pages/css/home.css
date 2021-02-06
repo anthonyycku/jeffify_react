@@ -37,10 +37,12 @@
 
 .album {
     width: 200px;
-    height: 250px;
+    height: 260px;
     text-align: center;
     margin-right: 20px;
+    margin-bottom: 20px;
     display: inline-block;
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
 }
 
 .album img {
@@ -49,12 +51,24 @@
     margin-bottom: 5px;
 }
 
+.album img:hover {
+    opacity: 0.5;
+}
+
 .album p {
     padding: 0;
     margin: 0;
     font-weight: 700;
 }
 
+.albumName {
+    color: white;
+}
+
 .album .artist {
     color: rgb(164, 161, 161);
+}
+
+.albumInfo {
+    text-decoration: none;
 }
