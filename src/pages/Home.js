@@ -32,8 +32,10 @@ export default function Home(props) {
                     {albums.map(result => {
                         return <div key={result.id} className="album">
                             <img src={result.image} />
-                            <p className="albumName">{result.name}</p>
-                            <p className="artist">{result.artist}</p>
+                            <div className="albumInfo">
+                                <p className="albumName">{result.name}</p>
+                                <p className="artist">{result.artist}</p>
+                            </div>
                         </div>
                     })}
                 </div>
