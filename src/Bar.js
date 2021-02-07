@@ -27,7 +27,7 @@ export default function Bar(props) {
             onTimeUpdate(setClickedTime(move))
         }
 
-        document.addEventListener("mouseMove", updateTimeOnMove);
+        document.addEventListener("mousemove", updateTimeOnMove);
 
         document.addEventListener("mouseup", () => {
             document.removeEventListener("mousemove", updateTimeOnMove);
