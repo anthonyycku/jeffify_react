@@ -1,0 +1,27 @@
+.bar {
+    display: flex;
+    align-items: center;
+}
+
+.barTime {
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.timelinebar {
+    width: 90%;
+    height: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.knob {
+    bottom: 5px;
+    position: relative;
+    height: 16px;
+    width: 16px;
+    border: 1.5px solid white;
+    border-radius: 50%;
+    background-color: white;
+}

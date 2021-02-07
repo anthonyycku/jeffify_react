@@ -1,7 +1,9 @@
 import './App.css';
+import './audiobox.css'
 import AudioPlayer from "./AudioPlayer"
 import Play from "./Play"
 import Pause from "./Pause"
+import Bar from "./Bar"
 
 export default function Audiobox(props) {
     const { currentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
@@ -28,6 +30,7 @@ export default function Audiobox(props) {
                             <a className="backward">
                                 <i class="fas fa-step-backward"></i>
                             </a>
+                            {/* PLAY BUTTON */}
                             {playing ?
                                 <Pause handleClick={() => setPlaying(false)} />
                                 :
@@ -45,8 +48,12 @@ export default function Audiobox(props) {
                         <div className="col-sm-12" style={{ color: "white" }}></div>
                     </div>
                     {/* bar */}
-                    <div className="progressbar">
-
+                    <div className="progressbar" style={{ color: "white" }} >
+                        <Bar
+                            currentTime={currentTime}
+                            duration={duration}
+                            onTimeUpdate={(time) => setClickedTime(time)}
+                        />
                     </div>
                 </div>
                 {/* RIGHT BOX */}
