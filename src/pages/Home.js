@@ -38,7 +38,6 @@ export default function Home(props) {
         setAlbums(previous => [...newAlbum])
     }
 
-
     if (albums.length > 0) {
         return (
             <div className="homeContainer">
@@ -76,7 +75,12 @@ export default function Home(props) {
                                     </div>
                                 }
 
-                                <Link to={{ pathname: "/songs", state: { albumID: result.id } }} className="albumInfo">
+                                <Link to={{
+                                    pathname: "/songs",
+                                    state: {
+                                        albumID: result.id
+                                    }
+                                }} className="albumInfo">
                                     <p className="albumName">{result.name}</p>
                                     <p className="artist">{result.artist}</p>
                                 </Link>

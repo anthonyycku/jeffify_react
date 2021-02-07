@@ -13,6 +13,7 @@ export default function Songs(props) {
         window.scrollTo(0, 0);
         getSongs();
         getAlbum();
+        console.log(props.location.state.help)
     }, [])
 
     const getSongs = () => {
@@ -28,9 +29,10 @@ export default function Songs(props) {
         })
     }
 
-    const playClick = (link) => {
+    const playClick = (link, album) => {
         let audio = document.getElementById("audio")
         audio.src = link;
+        props.setCurrentAlbum(album)
     }
 
 
@@ -53,7 +55,7 @@ export default function Songs(props) {
                     return <div className="row songRow" key={result.id}>
                         <div className="col-sm-10 song">
 
-                            <div className="songPlay" onClick={() => playClick(result.audio)}>
+                            <div className="songPlay" onClick={() => playClick(result.audio, result.album)}>
                                 <i class="fas fa-play-circle"></i>
                             </div>
                             <span>{result.name}</span>
