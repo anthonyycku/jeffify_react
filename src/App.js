@@ -12,9 +12,30 @@ import Audiobox from "./Audiobox"
 
 function App() {
   const [page, setPage] = useState("home");
+  const [play, setPlay] = useState(false);
+
+  useEffect(() => {
+  }, [])
+
+  // MUSIC METHODS
+  function playAudio() {
+    const audio = document.getElementById("audio");
+    setPlay(true)
+    audio.play();
+  }
+  function pauseAudio() {
+    const audio = document.getElementById("audio");
+    setPlay(false)
+    audio.pause();
+  }
 
   return (
     <div className="container-fluid">
+      {/* AUDIO */}
+      <audio id="audio">
+        <source id="source" src="https://jeffify.s3.amazonaws.com/sorry.mp3" type="audio/mp3"></source>
+      </audio>
+      {/*  */}
       <Router>
 
         <Nav setPage={setPage} page={page} />
@@ -31,7 +52,7 @@ function App() {
           </Switch>
         </div>
 
-        <Audiobox />
+        <Audiobox play={play} setPlay={setPlay} playAudio={playAudio} pauseAudio={pauseAudio} />
 
       </Router>
     </div >

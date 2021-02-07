@@ -1,6 +1,6 @@
 import './App.css';
 
-export default function Audiobox() {
+export default function Audiobox(props) {
 
     return (
         <div className="audiobox">
@@ -20,7 +20,11 @@ export default function Audiobox() {
                                 <i class="fas fa-step-backward"></i>
                             </a>
                             <a className="play">
-                                <i className="far fa-play-circle"></i>
+                                {!props.play ?
+                                    <div onClick={() => props.playAudio()}><i className="far fa-play-circle"></i></div>
+                                    :
+                                    <div onClick={() => props.pauseAudio()}><i class="far fa-pause-circle"></i></div>
+                                }
                             </a>
                             <a className="forward">
                                 <i class="fas fa-step-forward"></i>
@@ -29,6 +33,9 @@ export default function Audiobox() {
                                 <i class="far fa-redo"></i>
                             </a>
                         </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-12" style={{ color: "white" }}></div>
                     </div>
                     {/* bar */}
                     <div className="progressbar">
