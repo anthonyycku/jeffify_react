@@ -1,9 +1,18 @@
 import './App.css';
+import AudioPlayer from "./AudioPlayer"
+import Play from "./Play"
+import Pause from "./Pause"
 
 export default function Audiobox(props) {
+    const { currentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
 
     return (
         <div className="audiobox">
+            {/* audio */}
+            <audio id="audio">
+                <source id="source" src="https://jeffify.s3.amazonaws.com/sorry.mp3" type="audio/mp3" />
+            </audio>
+
             <div className="row">
                 {/* LEFT BOX */}
                 <div className="col-sm-3 left">
@@ -19,13 +28,11 @@ export default function Audiobox(props) {
                             <a className="backward">
                                 <i class="fas fa-step-backward"></i>
                             </a>
-                            <a className="play">
-                                {!props.play ?
-                                    <div onClick={() => props.playAudio()}><i className="far fa-play-circle"></i></div>
-                                    :
-                                    <div onClick={() => props.pauseAudio()}><i class="far fa-pause-circle"></i></div>
-                                }
-                            </a>
+                            {playing ?
+                                <Pause handleClick={() => setPlaying(false)} />
+                                :
+                                <Play handleClick={() => setPlaying(true)} />
+                            }
                             <a className="forward">
                                 <i class="fas fa-step-forward"></i>
                             </a>
