@@ -1,5 +1,6 @@
 import './App.css';
 import './audiobox.css'
+import React, { useState, useEffect } from "react";
 import AudioPlayer from "./AudioPlayer"
 import Play from "./Play"
 import Pause from "./Pause"
@@ -7,6 +8,17 @@ import Bar from "./Bar"
 
 export default function Audiobox(props) {
     const { currentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
+    const [source, setSource] = useState("")
+    const { queue } = props;
+
+    useEffect(() => {
+        let sourceSrc = document.getElementById("audio");
+
+        sourceSrc.addEventListener("loadedsource", setSource(sourceSrc.src));
+        if (source !== "" && currentTime === 0) {
+            setPlaying(true);
+        }
+    })
 
     return (
         <div className="audiobox">

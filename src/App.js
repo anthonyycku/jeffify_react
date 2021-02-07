@@ -12,26 +12,29 @@ import Audiobox from "./Audiobox"
 
 function App() {
   const [page, setPage] = useState("home");
+  const [queue, setQueue] = useState([]);
+  const [currentAlbum, setCurrentAlbum] = useState();
 
   return (
     <div className="container-fluid">
       <Router>
-
         <Nav setPage={setPage} page={page} />
-
-        {/* BODY */}
+        <Audiobox queue={queue} />
         <div className="bodyContainer">
           <Switch>
-            <Route path="/home" component={Home} />
+            <Route path="/home"
+              render={() => <Home
+                setQueue={setQueue}
+                currentAlbum={currentAlbum}
+                setCurrentAlbum={setCurrentAlbum}
+              />} />
             <Route path="/playlist" component={Playlist} />
             <Route path="/search" component={Search} />
             <Route path="/songs" component={Songs} />
-            {/* <Route path="/createlist" component={ } /> */}
             <Redirect from="/" to="/home" />
           </Switch>
         </div>
 
-        <Audiobox />
 
       </Router>
     </div >

@@ -1,5 +1,34 @@
+.albumPlay {
+    position: absolute;
+    font-size: 3em;
+    color: rgb(0, 228, 0);
+    top: 25%;
+    left: 40%;
+}
+
 .row {
     margin: 0;
+}
+
+.randomize {
+    background: linear-gradient(to bottom, #747070 5%, #3f3f3f 100%);
+    background-color: #5e5b5b;
+    color: #0bb802;
+    border-radius: 5px;
+}
+
+
+.randomDiv {
+    display: flex;
+    align-items: center;
+}
+
+.randomDiv p {
+    letter-spacing: 1px;
+    padding-left: 5px;
+    margin: 0;
+    font-weight: 700;
+    color: rgb(206, 206, 206);
 }
 
 .feature {
@@ -36,6 +65,7 @@
 }
 
 .album {
+    position: relative;
     width: 200px;
     height: 260px;
     text-align: center;
@@ -54,6 +84,24 @@
 .album img:hover {
     opacity: 0.5;
 }
+
+.albumIcon {
+    position: absolute;
+    opacity: 0;
+    font-size: 3em;
+    left: 40%;
+    top: 25%;
+}
+
+.album img:hover+.albumIcon {
+    opacity: 1;
+}
+
+.albumIcon:hover {
+    opacity: 1;
+    transform: scale(1.25);
+}
+
 
 .album p {
     padding: 0;

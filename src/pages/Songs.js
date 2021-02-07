@@ -2,6 +2,7 @@ import axios from "axios";
 import "./css/songs.css"
 import React, { useState, useEffect } from "react";
 import Loader from "../Loader"
+import AudioPlayer from "../AudioPlayer"
 
 
 export default function Songs(props) {
@@ -9,6 +10,7 @@ export default function Songs(props) {
     const [album, setAlbum] = useState(null)
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         getSongs();
         getAlbum();
     }, [])
@@ -24,6 +26,11 @@ export default function Songs(props) {
         axios.get("https://jeffify.herokuapp.com/albums/" + albumID).then(response => {
             setAlbum(response.data)
         })
+    }
+
+    const playClick = (link) => {
+        let audio = document.getElementById("audio")
+        audio.src = link;
     }
 
 
@@ -43,9 +50,14 @@ export default function Songs(props) {
                     </div>
                 </div>
                 {songs.map(result => {
-                    return <div className="row songRow">
+                    return <div className="row songRow" key={result.id}>
                         <div className="col-sm-10 song">
-                            <p><i class="fas fa-play-circle"></i> <span>{result.name}</span></p>
+
+                            <div className="songPlay" onClick={() => playClick(result.audio)}>
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <span>{result.name}</span>
+
                         </div>
 
                     </div>
