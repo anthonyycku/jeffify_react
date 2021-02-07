@@ -15,19 +15,20 @@ export default function Songs(props) {
 
     const getSongs = () => {
         const { albumID } = props.location.state
-        axios.get("https://jeffify.herokuapp.com/specific/" + albumID).then(response => {
+        axios.get("https://jeffify.herokuapp.com/songs/" + albumID).then(response => {
             setSongs(response.data)
         })
     }
     const getAlbum = () => {
         const { albumID } = props.location.state;
-        axios.get("https://jeffify.herokuapp.com/find/" + albumID).then(response => {
+        axios.get("https://jeffify.herokuapp.com/albums/" + albumID).then(response => {
             setAlbum(response.data)
         })
     }
 
+
     if (songs.length > 0 && album !== null) {
-        const { image, name, artist } = album
+        const { image, name, artist, year } = album
         return (
             <div className="songsContainer">
                 <div className="row albumHeader">
@@ -36,6 +37,7 @@ export default function Songs(props) {
                         <div className="albumInfo">
                             <h1>{name}</h1>
                             <h4>{artist}</h4>
+                            <h5>{year}</h5>
                             <h5><i class="fad fa-layer-group"></i> {songs.length} songs</h5>
                         </div>
                     </div>

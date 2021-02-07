@@ -12,7 +12,7 @@ export default function Audiobox(props) {
         <div className="audiobox">
             {/* audio */}
             <audio id="audio">
-                <source id="source" src="https://jeffify.s3.amazonaws.com/sorry.mp3" type="audio/mp3" />
+                <source id="source" src="" type="audio/mp3" />
             </audio>
 
             <div className="row">

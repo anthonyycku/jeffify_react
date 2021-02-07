@@ -13,8 +13,20 @@ export default function Home(props) {
 
     const getAlbums = () => {
         axios.get("https://jeffify.herokuapp.com/albums").then(response => {
-            setAlbums(response.data)
+            randomizeAlbum(response.data);
         })
+
+    }
+
+    const randomizeAlbum = (data) => {
+        let newAlbum = data;
+        for (let i = newAlbum.length - 1; i >= 0; i--) {
+            let randomIndex = Math.floor(Math.random() * newAlbum.length)
+            let temp = newAlbum[i];
+            newAlbum[i] = newAlbum[randomIndex];
+            newAlbum[randomIndex] = temp;
+        }
+        setAlbums(newAlbum)
     }
 
     if (albums.length > 0) {
