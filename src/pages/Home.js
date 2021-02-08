@@ -65,25 +65,19 @@ export default function Home(props) {
 
                                 {props.currentAlbum === result.name ?
                                     <div>
-                                        <img style={{ opacity: "0.5" }} src={result.image} />
+                                        <img style={{ opacity: "0.5" }} src={result.image} className="albumimage" />
                                         <div onClick={() => getSpecificAlbum(result.id, result.name)} className="albumPlay"><i class="fas fa-volume-up"></i></div>
                                     </div>
                                     :
                                     <div>
-                                        <img src={result.image} />
+                                        <img src={result.image} className="albumimage" />
                                         <div onClick={() => getSpecificAlbum(result.id, result.name)} className="albumIcon"><i class="fal fa-play-circle"></i></div>
                                     </div>
                                 }
-
-                                <Link to={{
-                                    pathname: "/songs",
-                                    state: {
-                                        albumID: result.id
-                                    }
-                                }} className="albumInfo">
+                                <Link to="/songs" style={{ textDecoration: "none" }} onClick={() => props.setAlbumID(result.id)} >
                                     <p className="albumName">{result.name}</p>
-                                    <p className="artist">{result.artist}</p>
                                 </Link>
+                                <p className="artist">{result.artist}</p>
                             </div>
                         })}
                     </div>

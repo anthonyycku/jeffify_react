@@ -13,17 +13,16 @@ export default function Songs(props) {
         window.scrollTo(0, 0);
         getSongs();
         getAlbum();
-        console.log(props.location.state.help)
     }, [])
 
     const getSongs = () => {
-        const { albumID } = props.location.state
+        const { albumID } = props;
         axios.get("https://jeffify.herokuapp.com/songs/" + albumID).then(response => {
             setSongs(response.data)
         })
     }
     const getAlbum = () => {
-        const { albumID } = props.location.state;
+        const { albumID } = props;
         axios.get("https://jeffify.herokuapp.com/albums/" + albumID).then(response => {
             setAlbum(response.data)
         })

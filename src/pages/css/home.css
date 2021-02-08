@@ -100,8 +100,8 @@
 .albumIcon:hover {
     opacity: 1;
     transform: scale(1.25);
+    color: rgb(4, 227, 4);
 }
-
 
 .album p {
     padding: 0;
