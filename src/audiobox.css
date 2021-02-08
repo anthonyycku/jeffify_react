@@ -25,3 +25,25 @@
     border-radius: 50%;
     background-color: white;
 }
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.volumebox {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgb(128, 128, 128);
+}
+
+#volume {
+    margin: 0 auto;
+    height: 5px;
+    width: 100px;
+    background: #555;
+    border-radius: 20px;
+}

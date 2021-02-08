@@ -93,7 +93,7 @@
     top: 25%;
 }
 
-.album img:hover+.albumIcon {
+.profilebox:hover+.albumIcon {
     opacity: 1;
 }
 

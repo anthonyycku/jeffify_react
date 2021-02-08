@@ -57,7 +57,7 @@ export default function Songs(props) {
                             <div className="songPlay" onClick={() => playClick(result.audio, result.album)}>
                                 <i class="fas fa-play-circle"></i>
                             </div>
-                            <span>{result.name}</span>
+                            <span style={{ marginLeft: "20px" }}>{result.name}</span>
 
                         </div>
 

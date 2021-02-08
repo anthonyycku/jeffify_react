@@ -1,6 +1,7 @@
 import './App.css';
 import './audiobox.css'
 import React, { useState, useEffect } from "react";
+import VolumeBox from "./VolumeBox"
 import AudioPlayer from "./AudioPlayer"
 import Play from "./Play"
 import Pause from "./Pause"
@@ -70,7 +71,7 @@ export default function Audiobox(props) {
                 </div>
                 {/* RIGHT BOX */}
                 <div className="col-sm-3 right">
-
+                    <VolumeBox />
                 </div>
             </div>
         </div>
