@@ -30,8 +30,9 @@ export default function Songs(props) {
     }
 
     const playClick = (link, album) => {
-        props.setCurrentAlbum(album)
-        setQueue([{ audio: link }])
+        props.setCurrentAlbum(album);
+        setQueue([{ audio: link }]);
+        props.setqindex(0);
     }
 
 

@@ -8,21 +8,56 @@ import Pause from "./Pause"
 import Bar from "./Bar"
 
 export default function Audiobox(props) {
-    const { currentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
-    const { queue, setQueue } = props;
+    const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
+    const { queue, qindex, setqindex, repeat, setRepeat } = props;
+
+
 
     useEffect(() => {
         let audio = document.getElementById("audio");
-        if (queue.length > 0) {
-            audio.src = queue[0].audio
+
+        if (qindex < queue.length) {
+            console.log(qindex);
+            audio.src = queue[qindex].audio
             setPlaying(true);
         } else {
             setPlaying(false);
         }
-    }, [queue])
+
+    }, [queue, qindex])
+
+    const nextSong = () => {
+        if (queue.length === 1) {
+            if (!repeat) {
+                setPlaying(false);
+            } else {
+                setPlaying(true);
+            }
+        } else {
+            if (repeat) {
+                setPlaying(true);
+            } else {
+                setqindex(qindex + 1);
+            }
+        }
+    }
+
+    const prevSong = () => {
+        if (qindex !== 0 && currentTime < 3) {
+            setqindex(qindex - 1);
+        } else {
+            let audio = document.getElementById("audio");
+            audio.currentTime = 0;
+        }
+    }
+
+    const forward = () => {
+        setqindex(qindex + 1);
+    }
+
 
     return (
-        <div className="audiobox">
+        <div className="audiobox" onEnded={() => nextSong()}>
             {/* audio */}
             <audio id="audio">
                 <source id="source" src="" type="audio/mp3" />
@@ -40,7 +75,7 @@ export default function Audiobox(props) {
                             <a className="random">
                                 <i class="fad fa-random"></i>
                             </a>
-                            <a className="backward">
+                            <a className="backward" onClick={() => prevSong()}>
                                 <i class="fas fa-step-backward"></i>
                             </a>
                             {/* PLAY BUTTON */}
@@ -49,12 +84,18 @@ export default function Audiobox(props) {
                                 :
                                 <Play handleClick={() => setPlaying(true)} />
                             }
-                            <a className="forward">
+                            <a className="forward" onClick={() => forward()}>
                                 <i class="fas fa-step-forward"></i>
                             </a>
-                            <a className="redo">
-                                <i class="far fa-redo"></i>
-                            </a>
+                            {!repeat ?
+                                <a className="redo" onClick={() => setRepeat(true)}>
+                                    <i style={{ color: "grey" }} class="far fa-redo"></i>
+                                </a>
+                                :
+                                <a className="redo" onClick={() => setRepeat(false)}>
+                                    <i style={{ color: "green" }} class="far fa-redo"></i>
+                                </a>
+                            }
                         </div>
                     </div>
                     <div className="row">
@@ -62,7 +103,7 @@ export default function Audiobox(props) {
                     </div>
                     {/* bar */}
                     <div className="progressbar" style={{ color: "white" }} >
-                        {document.getElementById("audio") ?
+                        {document.getElementById("audio") && document.getElementById("audio").src !== "" ?
                             <Bar
                                 currentTime={currentTime}
                                 duration={duration}

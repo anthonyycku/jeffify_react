@@ -13,23 +13,22 @@ import Audiobox from "./Audiobox"
 function App() {
   const [page, setPage] = useState("home");
   const [queue, setQueue] = useState([]);
+  const [qindex, setqindex] = useState(0);
   const [currentAlbum, setCurrentAlbum] = useState();
   const [albumID, setAlbumID] = useState();
+  const [repeat, setRepeat] = useState();
 
-  useEffect(() => {
-    let audio = document.getElementById("audio");
-    audio.addEventListener("ended", function () {
-      let newQueue = queue;
-      newQueue.shift();
-      setQueue(queue => [...newQueue]);
-    })
-  }, [queue])
 
   return (
     <div className="container-fluid">
       <Router>
         <Nav setPage={setPage} page={page} />
-        <Audiobox setQueue={setQueue} queue={queue} />
+        <Audiobox
+          queue={queue}
+          qindex={qindex}
+          setqindex={setqindex}
+          repeat={repeat}
+          setRepeat={setRepeat} />
         <div className="bodyContainer">
           <Switch>
             <Route path="/home"
@@ -38,6 +37,7 @@ function App() {
                 currentAlbum={currentAlbum}
                 setCurrentAlbum={setCurrentAlbum}
                 setAlbumID={setAlbumID}
+                setqindex={setqindex}
               />} />
             <Route path="/playlist" component={Playlist} />
             <Route path="/search" component={Search} />
@@ -46,6 +46,8 @@ function App() {
                 albumID={albumID}
                 setCurrentAlbum={setCurrentAlbum}
                 setQueue={setQueue}
+                setqindex={setqindex}
+                setRepeat={setRepeat}
               />} />
             <Redirect from="/" to="/home" />
           </Switch>

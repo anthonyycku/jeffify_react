@@ -21,6 +21,7 @@ export default function Home(props) {
     const getSpecificAlbum = (id, album) => {
         axios.get("https://jeffify.herokuapp.com/queue/" + id).then(response => {
             props.setQueue(response.data)
+            props.setqindex(0)
         })
         props.setCurrentAlbum(album)
     }

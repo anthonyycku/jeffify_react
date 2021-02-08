@@ -36,6 +36,6 @@ export default function AudioPlayer() {
     });
 
     return {
-        currentTime, duration, playing, setPlaying, setClickedTime
+        currentTime, duration, playing, setPlaying, setClickedTime, setCurrentTime
     }
 }
