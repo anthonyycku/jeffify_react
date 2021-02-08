@@ -62,11 +62,15 @@ export default function Audiobox(props) {
                     </div>
                     {/* bar */}
                     <div className="progressbar" style={{ color: "white" }} >
-                        <Bar
-                            currentTime={currentTime}
-                            duration={duration}
-                            onTimeUpdate={(time) => setClickedTime(time)}
-                        />
+                        {document.getElementById("audio") ?
+                            <Bar
+                                currentTime={currentTime}
+                                duration={duration}
+                                onTimeUpdate={(time) => setClickedTime(time)}
+                            />
+                            :
+                            null
+                        }
                     </div>
                 </div>
                 {/* RIGHT BOX */}
