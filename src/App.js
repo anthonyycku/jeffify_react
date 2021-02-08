@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Switch, Redirect } from "react-router-d
 import React, { useState, useEffect } from 'react';
 // IMPORT COMPONENTS
 import Home from "./pages/Home";
+import Artist from "./pages/Artist";
 import Playlist from "./pages/Playlist";
 import Search from "./pages/Search";
 import Songs from "./pages/Songs";
@@ -49,6 +50,7 @@ function App() {
                 setqindex={setqindex}
                 song={queue[qindex]}
               />} />
+            <Route path="/artist" component={Artist} />
             <Redirect from="/" to="/home" />
           </Switch>
         </div>

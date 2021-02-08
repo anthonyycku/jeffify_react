@@ -59,8 +59,15 @@
 .backward:hover,
 .forward:hover,
 .redo:hover,
-.random:hover {
+.random:hover,
+.redoON:hover {
     color: white;
+}
+
+.redoON {
+    color: green;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .backward,

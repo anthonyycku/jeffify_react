@@ -98,3 +98,9 @@
         opacity: 0;
     }
 }
+
+.loadingText {
+    position: absolute;
+    top: 50%;
+    left: 43%;
+}

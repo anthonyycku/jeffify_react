@@ -98,17 +98,16 @@ export default function Audiobox(props) {
                                 <i class="fas fa-step-forward"></i>
                             </a>
                             {/* REPEAT BUTTON */}
-                            <div className="redo">
-                                {!repeat ?
-                                    <a onClick={() => setRepeat(true)}>
-                                        <i style={{ color: "grey" }} class="far fa-redo"></i>
-                                    </a>
-                                    :
-                                    <a onClick={() => setRepeat(false)}>
-                                        <i style={{ color: "green" }} class="far fa-redo"></i>
-                                    </a>
-                                }
-                            </div>
+
+                            {!repeat ?
+                                <a className="redo" onClick={() => setRepeat(true)}>
+                                    <i class="far fa-redo"></i>
+                                </a>
+                                :
+                                <a className="redoON" onClick={() => setRepeat(false)}>
+                                    <i class="far fa-redo"></i>
+                                </a>
+                            }
                         </div>
                     </div>
                     <div className="row">
