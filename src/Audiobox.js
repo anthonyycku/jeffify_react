@@ -9,17 +9,17 @@ import Bar from "./Bar"
 
 export default function Audiobox(props) {
     const { currentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
-    const [source, setSource] = useState("")
-    const { queue } = props;
+    const { queue, setQueue } = props;
 
     useEffect(() => {
-        let sourceSrc = document.getElementById("audio");
-
-        sourceSrc.addEventListener("loadedsource", setSource(sourceSrc.src));
-        if (source !== "" && currentTime === 0) {
+        let audio = document.getElementById("audio");
+        if (queue.length > 0) {
+            audio.src = queue[0].audio
             setPlaying(true);
+        } else {
+            setPlaying(false);
         }
-    })
+    }, [queue])
 
     return (
         <div className="audiobox">

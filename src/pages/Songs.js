@@ -8,6 +8,7 @@ import AudioPlayer from "../AudioPlayer"
 export default function Songs(props) {
     const [songs, setSongs] = useState([])
     const [album, setAlbum] = useState(null)
+    const { setQueue } = props;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,9 +30,8 @@ export default function Songs(props) {
     }
 
     const playClick = (link, album) => {
-        let audio = document.getElementById("audio")
-        audio.src = link;
         props.setCurrentAlbum(album)
+        setQueue([{ audio: link }])
     }
 
 

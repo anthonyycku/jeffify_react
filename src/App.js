@@ -16,11 +16,20 @@ function App() {
   const [currentAlbum, setCurrentAlbum] = useState();
   const [albumID, setAlbumID] = useState();
 
+  useEffect(() => {
+    let audio = document.getElementById("audio");
+    audio.addEventListener("ended", function () {
+      let newQueue = queue;
+      newQueue.shift();
+      setQueue(queue => [...newQueue]);
+    })
+  }, [queue])
+
   return (
     <div className="container-fluid">
       <Router>
         <Nav setPage={setPage} page={page} />
-        <Audiobox queue={queue} />
+        <Audiobox setQueue={setQueue} queue={queue} />
         <div className="bodyContainer">
           <Switch>
             <Route path="/home"
@@ -33,7 +42,10 @@ function App() {
             <Route path="/playlist" component={Playlist} />
             <Route path="/search" component={Search} />
             <Route path="/songs"
-              render={() => <Songs albumID={albumID} setCurrentAlbum={setCurrentAlbum}
+              render={() => <Songs
+                albumID={albumID}
+                setCurrentAlbum={setCurrentAlbum}
+                setQueue={setQueue}
               />} />
             <Redirect from="/" to="/home" />
           </Switch>
