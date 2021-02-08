@@ -2,10 +2,12 @@ import './App.css';
 import './audiobox.css'
 import React, { useState, useEffect } from "react";
 import VolumeBox from "./VolumeBox"
+import CurrentSong from "./CurrentSong"
 import AudioPlayer from "./AudioPlayer"
 import Play from "./Play"
 import Pause from "./Pause"
 import Bar from "./Bar"
+
 
 export default function Audiobox(props) {
     const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
@@ -17,7 +19,6 @@ export default function Audiobox(props) {
         let audio = document.getElementById("audio");
 
         if (qindex < queue.length) {
-            console.log(qindex);
             audio.src = queue[qindex].audio
             setPlaying(true);
         } else {
@@ -52,7 +53,12 @@ export default function Audiobox(props) {
     }
 
     const forward = () => {
-        setqindex(qindex + 1);
+        if (!repeat) {
+            setqindex(qindex + 1);
+        } else {
+            let audio = document.getElementById("audio");
+            audio.currentTime = audio.duration;
+        }
     }
 
 
@@ -66,6 +72,7 @@ export default function Audiobox(props) {
             <div className="row">
                 {/* LEFT BOX */}
                 <div className="col-sm-3 left">
+                    <CurrentSong song={queue[qindex]} />
                 </div>
                 {/* AUDIO CONTROL */}
                 <div className="col-sm-6 middle">

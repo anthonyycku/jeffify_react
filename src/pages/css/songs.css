@@ -56,3 +56,8 @@ h5 {
 .song:hover {
     background-color: rgba(0, 0, 0, 0.55);
 }
+
+.currentlyplaying {
+    margin-left: 20px;
+    color: rgb(3, 191, 3);
+}

@@ -1,0 +1,43 @@
+.currentsongbox {
+    color: white;
+    display: flex;
+    animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.currentsongbox img {
+    padding-top: 10px;
+    width: 80px;
+    height: 85px;
+}
+
+.songinformation {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.songinformation p {
+    margin: 0;
+}
+
+.songtitle {
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.songartist {
+    letter-spacing: 0.05em;
+    font-size: 0.8em;
+    font-weight: 400;
+}

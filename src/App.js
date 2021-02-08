@@ -47,7 +47,7 @@ function App() {
                 setCurrentAlbum={setCurrentAlbum}
                 setQueue={setQueue}
                 setqindex={setqindex}
-                setRepeat={setRepeat}
+                song={queue[qindex]}
               />} />
             <Redirect from="/" to="/home" />
           </Switch>

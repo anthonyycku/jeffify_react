@@ -8,7 +8,7 @@ import AudioPlayer from "../AudioPlayer"
 export default function Songs(props) {
     const [songs, setSongs] = useState([])
     const [album, setAlbum] = useState(null)
-    const { setQueue } = props;
+    const { setQueue, song } = props;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,9 +29,9 @@ export default function Songs(props) {
         })
     }
 
-    const playClick = (link, album) => {
-        props.setCurrentAlbum(album);
-        setQueue([{ audio: link }]);
+    const playClick = (song) => {
+        props.setCurrentAlbum(song.album);
+        setQueue([song]);
         props.setqindex(0);
     }
 
@@ -55,11 +55,17 @@ export default function Songs(props) {
                     return <div className="row songRow" key={result.id}>
                         <div className="col-sm-10 song">
 
-                            <div className="songPlay" onClick={() => playClick(result.audio, result.album)}>
+                            <div className="songPlay" onClick={() => playClick(result)}>
                                 <i class="fas fa-play-circle"></i>
                             </div>
-                            <span style={{ marginLeft: "20px" }}>{result.name}</span>
-
+                            <p>
+                                <span style={{ marginLeft: "20px" }}>{result.song}</span>
+                                {song && song.song === result.song ?
+                                    <span className="currentlyplaying"><i class="far fa-volume-up"></i></span>
+                                    :
+                                    null
+                                }
+                            </p>
                         </div>
 
                     </div>
