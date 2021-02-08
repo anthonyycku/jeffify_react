@@ -98,28 +98,3 @@ li {
     display: flex;
     justify-content: center;
 }
-
-.audiobox .play {
-    color: grey;
-    font-size: 2.5em;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.play:hover,
-.backward:hover,
-.forward:hover,
-.redo:hover,
-.random:hover {
-    color: white;
-}
-
-.backward,
-.forward,
-.redo,
-.random {
-    margin-left: 20px;
-    margin-right: 20px;
-    color: grey;
-    font-size: 1em;
-}

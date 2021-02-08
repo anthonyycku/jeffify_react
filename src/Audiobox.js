@@ -79,9 +79,11 @@ export default function Audiobox(props) {
                     {/* audio controller */}
                     <div className="row">
                         <div className="col-sm-12 panel">
+                            {/* RANDOM */}
                             <a className="random">
                                 <i class="fad fa-random"></i>
                             </a>
+                            {/* BACKWARD */}
                             <a className="backward" onClick={() => prevSong()}>
                                 <i class="fas fa-step-backward"></i>
                             </a>
@@ -91,18 +93,22 @@ export default function Audiobox(props) {
                                 :
                                 <Play handleClick={() => setPlaying(true)} />
                             }
+                            {/* FORWARD */}
                             <a className="forward" onClick={() => forward()}>
                                 <i class="fas fa-step-forward"></i>
                             </a>
-                            {!repeat ?
-                                <a className="redo" onClick={() => setRepeat(true)}>
-                                    <i style={{ color: "grey" }} class="far fa-redo"></i>
-                                </a>
-                                :
-                                <a className="redo" onClick={() => setRepeat(false)}>
-                                    <i style={{ color: "green" }} class="far fa-redo"></i>
-                                </a>
-                            }
+                            {/* REPEAT BUTTON */}
+                            <div className="redo">
+                                {!repeat ?
+                                    <a onClick={() => setRepeat(true)}>
+                                        <i style={{ color: "grey" }} class="far fa-redo"></i>
+                                    </a>
+                                    :
+                                    <a onClick={() => setRepeat(false)}>
+                                        <i style={{ color: "green" }} class="far fa-redo"></i>
+                                    </a>
+                                }
+                            </div>
                         </div>
                     </div>
                     <div className="row">
