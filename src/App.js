@@ -44,7 +44,14 @@ function App() {
                 setArtistID={setArtistID}
               />} />
             <Route path="/playlist" component={Playlist} />
-            <Route path="/search" component={Search} />
+            <Route path="/search" render={() => <Search
+              albumID={albumID}
+              setArtistID={setArtistID}
+              setCurrentAlbum={setCurrentAlbum}
+              setQueue={setQueue}
+              setqindex={setqindex}
+              song={queue[qindex]}
+            />} />
             <Route path="/songs"
               render={() => <Songs
                 albumID={albumID}

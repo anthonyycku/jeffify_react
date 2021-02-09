@@ -129,6 +129,9 @@ export default function Artist(props) {
                                 <Link to="/songs" style={{ textDecoration: "none" }} onClick={() => props.setAlbumID(result.id)} >
                                     <p className="albumName">{result.name}</p>
                                 </Link>
+                                <div>
+                                    <p className="artist" style={{ color: "white" }}>{result.year}</p>
+                                </div>
                             </div>
                         })}
                     </div>
