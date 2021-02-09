@@ -46,6 +46,8 @@ function App() {
             <Route path="/playlist" component={Playlist} />
             <Route path="/search" render={() => <Search
               albumID={albumID}
+              setAlbumID={setAlbumID}
+              currentAlbum={currentAlbum}
               setArtistID={setArtistID}
               setCurrentAlbum={setCurrentAlbum}
               setQueue={setQueue}
