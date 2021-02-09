@@ -60,7 +60,7 @@ export default function Songs(props) {
                             </div>
                             <p>
                                 <span style={{ marginLeft: "20px" }}>{result.song}</span>
-                                {song && song.song === result.name ?
+                                {song && song.song === result.song ?
                                     <span className="currentlyplaying"><i class="far fa-volume-up"></i></span>
                                     :
                                     null

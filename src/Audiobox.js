@@ -38,7 +38,11 @@ export default function Audiobox(props) {
             if (repeat) {
                 setPlaying(true);
             } else {
-                setqindex(qindex + 1);
+                if (qindex !== queue.length - 1) {
+                    setqindex(qindex + 1);
+                } else {
+                    setPlaying(false);
+                }
             }
         }
     }
@@ -53,10 +57,14 @@ export default function Audiobox(props) {
     }
 
     const forward = () => {
+        let audio = document.getElementById("audio");
         if (!repeat) {
-            setqindex(qindex + 1);
+            if (qindex !== queue.length - 1) {
+                setqindex(qindex + 1);
+            } else {
+                audio.currentTime = audio.duration;
+            }
         } else {
-            let audio = document.getElementById("audio");
             audio.currentTime = audio.duration;
         }
     }

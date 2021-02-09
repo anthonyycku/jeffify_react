@@ -16,3 +16,13 @@
 .artistName h3 {
     font-weight: 900;
 }
+
+.artistsongtitle {
+    padding-left: 20px;
+    letter-spacing: 0.1em;
+    color: rgb(0, 216, 0);
+}
+
+.artistsongtitle h3 {
+    font-weight: 900;
+}
