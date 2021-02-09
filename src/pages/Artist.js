@@ -75,7 +75,7 @@ export default function Artist(props) {
                     </div>
                 </div>
                 <div className="artistsongtitle">
-                    <h3>Songs</h3>
+                    <h3>All Songs</h3>
                 </div>
                 {/* Songs list */}
                 {songs.map(result => {
@@ -100,13 +100,13 @@ export default function Artist(props) {
                 <hr />
 
                 <div className="artistsongtitle">
-                    <h3>Albums</h3>
+                    <h3>All Albums <span></span></h3>
                 </div>
 
 
                 {/* ALBUMS */}
                 <div className="row albumContainer">
-                    <div className="col-sm-9 albumsBox">
+                    <div className="col-sm-12 albumsBox">
                         {albums.map(result => {
                             return <div key={result.id} className="album">
 
