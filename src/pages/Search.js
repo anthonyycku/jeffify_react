@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./css/search.css"
 import Loader from "../Loader";
 
 
 export default function Search(props) {
     const { setQueue, song } = props;
+
+    const [noresult, setnoresult] = useState();
 
     const [allsongs, setallsongs] = useState();
     const [allalbums, setallalbums] = useState();
@@ -22,6 +25,7 @@ export default function Search(props) {
     useEffect(() => {
         window.scrollTo(0, 0)
         getallsongs();
+        getallalbums();
     }, [])
 
     const getallsongs = () => {
@@ -31,7 +35,9 @@ export default function Search(props) {
     }
 
     const getallalbums = () => {
-
+        axios.get("https://jeffify.herokuapp.com/albums").then(response => {
+            setallalbums(response.data);
+        })
     }
 
     const getallartists = () => {
@@ -39,7 +45,6 @@ export default function Search(props) {
     }
 
     const handleChange = (event) => {
-        console.log(event.target.value)
         let lowerCaseSearch = event.target.value.toLowerCase();
 
         if (lowerCaseSearch.length > 1) {
@@ -47,11 +52,30 @@ export default function Search(props) {
             setfilteredsongs(resultsongs);
             if (resultsongs.length > 0) {
                 setsongresult(true);
+            } else {
+                setsongresult(false)
+            }
+            let resultalbums = allalbums.filter(result => result.name.toLowerCase().includes(lowerCaseSearch))
+            setfilteredalbums(resultalbums);
+            if (resultalbums.length > 0) {
+                setalbumresult(true)
+            } else {
+                setalbumresult(false)
+            }
+
+            if (filteredsongs.length == 0 && filteredalbums.length == 0) {
+                setnoresult(true);
+            } else {
+                setnoresult(false);
             }
         } else {
             setfilteredsongs([]);
+            setfilteredalbums([]);
             setsongresult(false)
+            setalbumresult(false)
+            setnoresult(false)
         }
+
     }
 
     const playClick = (song) => {
@@ -60,7 +84,15 @@ export default function Search(props) {
         props.setqindex(0);
     }
 
-    if (!allsongs) {
+    const getSpecificAlbum = (id, album) => {
+        axios.get("https://jeffify.herokuapp.com/queue/" + id).then(response => {
+            props.setQueue(response.data)
+            props.setqindex(0)
+        })
+        props.setCurrentAlbum(album)
+    }
+
+    if (!allsongs || !allalbums) {
         return <Loader />
     } else {
         return (
@@ -77,6 +109,14 @@ export default function Search(props) {
                         />
                     </div>
                 </div>
+                {noresult ?
+                    <div className="row noresult">
+                        <div className="col-sm-12">
+                            <h3>No results match your input.</h3>
+                        </div>
+                    </div>
+                    :
+                    null}
 
                 <div className="row songalbumrow">
                     {/* SONG FIND */}
@@ -104,23 +144,50 @@ export default function Search(props) {
                                                 }
                                             </p>
                                         </div>
-
                                     </div>
-
                                 })}
-
                             </div>
                         </div>
                         :
                         null
                     }
+
+
                     {/* ALBUM FIND */}
                     {albumresult ?
-                        <div className="col-sm-6 albumfind">
+                        <div id="albumresult">
                             <div className="artistsongtitle">
                                 <h3>Albums</h3>
                             </div>
+                            <div className="col-sm-10 albumfind">
+                                {/* ALBUM CODE */}
+                                {filteredalbums.map(result => {
+                                    return <div key={result.id} className="album">
 
+                                        {props.currentAlbum === result.name ?
+                                            <div>
+                                                <Link to="/songs" onClick={() => props.setAlbumID(result.id)} style={{ cursor: "default" }}>
+                                                    <img style={{ opacity: "0.5" }} src={result.image} className="albumimage" />
+                                                </Link>
+                                                <div onClick={() => getSpecificAlbum(result.id, result.name)} className="albumPlay"><i class="fas fa-volume-up"></i></div>
+                                            </div>
+                                            :
+                                            <div>
+                                                <Link to="/songs" onClick={() => props.setAlbumID(result.id)} style={{ cursor: "default" }} className="profilebox">
+                                                    <img src={result.image} className="albumimage" />
+                                                </Link>
+                                                <div onClick={() => getSpecificAlbum(result.id, result.name)} className="albumIcon"><i class="fal fa-play-circle"></i></div>
+                                            </div>
+                                        }
+                                        <Link to="/songs" style={{ textDecoration: "none" }} onClick={() => props.setAlbumID(result.id)} >
+                                            <p className="albumName">{result.name}</p>
+                                        </Link>
+                                        <Link to="/artist" style={{ textDecoration: "none" }} onClick={() => props.setArtistID(result.artistID)}>
+                                            <p className="artist">{result.artist}</p>
+                                        </Link>
+                                    </div>
+                                })}
+                            </div>
                         </div>
                         :
                         null
