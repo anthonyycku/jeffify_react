@@ -1,0 +1,18 @@
+.artistImage {
+    display: flex;
+    justify-content: center;
+}
+
+.artistImage img {
+    border-radius: 50%;
+}
+
+.artistName {
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.1em;
+}
+
+.artistName h3 {
+    font-weight: 900;
+}

@@ -80,13 +80,15 @@ export default function Home(props) {
                                 <Link to="/songs" style={{ textDecoration: "none" }} onClick={() => props.setAlbumID(result.id)} >
                                     <p className="albumName">{result.name}</p>
                                 </Link>
-                                <p className="artist">{result.artist}</p>
+                                <Link to="/artist" style={{ textDecoration: "none" }} onClick={() => props.setArtistID(result.artistID)}>
+                                    <p className="artist">{result.artist}</p>
+                                </Link>
                             </div>
                         })}
                     </div>
                 </div>
 
-            </div>
+            </div >
         )
     } else {
         return <Loader />

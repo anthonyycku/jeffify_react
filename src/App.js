@@ -15,9 +15,11 @@ function App() {
   const [page, setPage] = useState("home");
   const [queue, setQueue] = useState([]);
   const [qindex, setqindex] = useState(0);
+  const [repeat, setRepeat] = useState();
+
   const [currentAlbum, setCurrentAlbum] = useState();
   const [albumID, setAlbumID] = useState();
-  const [repeat, setRepeat] = useState();
+  const [artistID, setArtistID] = useState();
 
 
   return (
@@ -39,6 +41,7 @@ function App() {
                 setCurrentAlbum={setCurrentAlbum}
                 setAlbumID={setAlbumID}
                 setqindex={setqindex}
+                setArtistID={setArtistID}
               />} />
             <Route path="/playlist" component={Playlist} />
             <Route path="/search" component={Search} />
@@ -50,7 +53,14 @@ function App() {
                 setqindex={setqindex}
                 song={queue[qindex]}
               />} />
-            <Route path="/artist" component={Artist} />
+            <Route path="/artist"
+              render={() => <Artist
+                artistID={artistID}
+                setCurrentAlbum={setCurrentAlbum}
+                setQueue={setQueue}
+                setqindex={setqindex}
+                song={queue[qindex]}
+              />} />
             <Redirect from="/" to="/home" />
           </Switch>
         </div>
