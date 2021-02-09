@@ -1,8 +1,7 @@
 .albumHeader {
     display: flex;
-    justify-content: center;
     padding: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .albumPic {
@@ -60,4 +59,20 @@ h5 {
 .currentlyplaying {
     margin-left: 20px;
     color: rgb(3, 191, 3);
+}
+
+.songpageartist {
+    color: white;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    font-size: 1.1em;
+}
+
+.songpageartist:hover {
+    transform: scale(1.1);
+}
+
+.songpagename {
+    letter-spacing: 0.05em;
+    font-weight: 800;
 }

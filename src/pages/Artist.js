@@ -74,8 +74,9 @@ export default function Artist(props) {
                         <h3>{artist.name}</h3>
                     </div>
                 </div>
+                <hr />
                 <div className="artistsongtitle">
-                    <h3>All Songs</h3>
+                    <h3>All Songs <span>({songs.length})</span></h3>
                 </div>
                 {/* Songs list */}
                 {songs.map(result => {
@@ -100,7 +101,7 @@ export default function Artist(props) {
                 <hr />
 
                 <div className="artistsongtitle">
-                    <h3>All Albums <span></span></h3>
+                    <h3>All Albums <span>({albums.length})</span></h3>
                 </div>
 
 

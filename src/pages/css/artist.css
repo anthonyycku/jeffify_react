@@ -26,3 +26,7 @@
 .artistsongtitle h3 {
     font-weight: 900;
 }
+
+.artistsongtitle span {
+    color: rgb(210, 206, 206);
+}

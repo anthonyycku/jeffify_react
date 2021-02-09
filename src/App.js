@@ -48,6 +48,7 @@ function App() {
             <Route path="/songs"
               render={() => <Songs
                 albumID={albumID}
+                setArtistID={setArtistID}
                 setCurrentAlbum={setCurrentAlbum}
                 setQueue={setQueue}
                 setqindex={setqindex}

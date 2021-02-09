@@ -1,8 +1,8 @@
 import axios from "axios";
 import "./css/songs.css"
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Loader from "../Loader"
-import AudioPlayer from "../AudioPlayer"
 
 
 export default function Songs(props) {
@@ -37,19 +37,25 @@ export default function Songs(props) {
 
 
     if (songs.length > 0 && album !== null) {
-        const { image, name, artist, year } = album
+        const { image, name, artist, year, id } = album
         return (
             <div className="songsContainer">
                 <div className="row albumHeader">
-                    <div className="col-sm-6 albumPic">
+                    <div className="col-sm-10 albumPic">
                         <img src={image} />
                         <div className="albumInfo">
-                            <h1>{name}</h1>
-                            <h4>{artist}</h4>
+                            <h1 className="songpagename">{name}</h1>
+                            <Link to="/artist" style={{ textDecoration: "none" }} onClick={() => props.setArtistID(id)}>
+                                <p className="songpageartist">{artist}</p>
+                            </Link>
                             <h5>{year}</h5>
                             <h5><i class="fad fa-layer-group"></i> {songs.length} songs</h5>
                         </div>
                     </div>
+                </div>
+                <hr />
+                <div className="artistsongtitle">
+                    <h3>Songs</h3>
                 </div>
                 {songs.map(result => {
                     return <div className="row songRow" key={result.id}>
