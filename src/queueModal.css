@@ -1,0 +1,58 @@
+.queuemodal {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.721);
+    z-index: 4;
+    height: 500px;
+    right: 1%;
+    top: -540px;
+    min-width: 300px;
+    padding: 5px;
+    animation: entrance 0.5s;
+}
+
+@keyframes entrance {
+    from {
+        transform: translateY(300px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.queueSong {
+    color: white;
+}
+
+.fa-caret-right {
+    color: rgb(0, 222, 0);
+}
+
+.queuelist h3 {
+    color: rgb(0, 206, 0);
+    letter-spacing: 0.05em;
+    font-weight: 800;
+}
+
+.queuelist {
+    overflow-y: auto;
+}
+
+.displayoff {
+    animation: exit 0.5s;
+}
+
+@keyframes exit {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(300px);
+        opacity: 0;
+    }
+}

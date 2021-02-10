@@ -2,6 +2,7 @@ import './App.css';
 import './audiobox.css'
 import React, { useState, useEffect } from "react";
 import VolumeBox from "./VolumeBox"
+import QueueModal from "./QueueModal"
 import CurrentSong from "./CurrentSong"
 import AudioPlayer from "./AudioPlayer"
 import Play from "./Play"
@@ -13,6 +14,7 @@ export default function Audiobox(props) {
     const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
     const { queue, setQueue, qindex, setqindex, repeat, setRepeat, random, setRandom } = props;
     const [randomQueue, setRandomQueue] = useState();
+    const [queueUp, setQueueUp] = useState();
 
 
 
@@ -86,6 +88,17 @@ export default function Audiobox(props) {
         setRandomQueue(queue => [...currentqueue]);
     }
 
+    const activateQ = () => {
+        if (queueUp) {
+            document.getElementById("modal").classList.toggle("displayoff")
+            setTimeout(() => {
+                setQueueUp(false);
+                document.getElementById("modal").classList.toggle("displayoff")
+            }, 450)
+        } else {
+            setQueueUp(true);
+        }
+    }
 
     return (
         <div className="audiobox" onEnded={() => nextSong()}>
@@ -93,11 +106,23 @@ export default function Audiobox(props) {
             <audio id="audio">
                 <source id="source" src="" type="audio/mp3" />
             </audio>
+
+            {/* QUEUE MODAL */}
+            <div id="modal">
+                {queueUp ?
+                    <QueueModal setQueue={setQueue} queue={queue} currentSong={queue[qindex]} />
+                    :
+                    null
+                }
+            </div>
+
+            {/*  */}
             <div className="row">
                 {/* LEFT BOX */}
                 <div className="col-sm-3 left">
                     <CurrentSong song={queue[qindex]} />
                 </div>
+
                 {/* audio controller */}
                 <div className="col-sm-6 middle">
                     <div className="row">
@@ -156,7 +181,7 @@ export default function Audiobox(props) {
                     </div>
                 </div>
                 {/* RIGHT BOX */}
-                <button className="queue">Queue ({queue.length})</button>
+                <button className="queue" onClick={() => activateQ()}>Queue ({queue.length})</button>
                 <div className="col-sm-3 right">
                     <VolumeBox />
                 </div>
