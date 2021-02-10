@@ -16,6 +16,8 @@ function App() {
   const [queue, setQueue] = useState([]);
   const [qindex, setqindex] = useState(0);
   const [repeat, setRepeat] = useState();
+  const [random, setRandom] = useState();
+
 
   const [currentAlbum, setCurrentAlbum] = useState();
   const [albumID, setAlbumID] = useState();
@@ -26,14 +28,20 @@ function App() {
     <div className="container-fluid">
       <Router>
         <Nav setPage={setPage} page={page} />
+
         <Audiobox
+          setQueue={setQueue}
           queue={queue}
           qindex={qindex}
           setqindex={setqindex}
           repeat={repeat}
-          setRepeat={setRepeat} />
+          setRepeat={setRepeat}
+          random={random}
+          setRandom={setRandom} />
         <div className="bodyContainer">
+
           <Switch>
+
             <Route path="/home"
               render={() => <Home
                 setQueue={setQueue}
@@ -43,7 +51,9 @@ function App() {
                 setqindex={setqindex}
                 setArtistID={setArtistID}
               />} />
+
             <Route path="/playlist" component={Playlist} />
+
             <Route path="/search" render={() => <Search
               albumID={albumID}
               setAlbumID={setAlbumID}
@@ -54,6 +64,7 @@ function App() {
               setqindex={setqindex}
               song={queue[qindex]}
             />} />
+
             <Route path="/songs"
               render={() => <Songs
                 albumID={albumID}
@@ -63,6 +74,7 @@ function App() {
                 setqindex={setqindex}
                 song={queue[qindex]}
               />} />
+
             <Route path="/artist"
               render={() => <Artist
                 artistID={artistID}
@@ -74,6 +86,7 @@ function App() {
                 song={queue[qindex]}
               />} />
             <Redirect from="/" to="/home" />
+
           </Switch>
         </div>
 

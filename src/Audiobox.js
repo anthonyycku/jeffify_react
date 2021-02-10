@@ -11,7 +11,8 @@ import Bar from "./Bar"
 
 export default function Audiobox(props) {
     const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
-    const { queue, qindex, setqindex, repeat, setRepeat } = props;
+    const { queue, setQueue, qindex, setqindex, repeat, setRepeat, random, setRandom } = props;
+    const [randomQueue, setRandomQueue] = useState();
 
 
 
@@ -39,6 +40,9 @@ export default function Audiobox(props) {
                 setPlaying(true);
             } else {
                 if (qindex !== queue.length - 1) {
+                    if (random) {
+                        setQueue(queue => [...randomQueue])
+                    }
                     setqindex(qindex + 1);
                 } else {
                     setPlaying(false);
@@ -46,6 +50,7 @@ export default function Audiobox(props) {
             }
         }
     }
+
 
     const prevSong = () => {
         if (qindex !== 0 && currentTime < 3) {
@@ -69,6 +74,18 @@ export default function Audiobox(props) {
         }
     }
 
+    const randomize = () => {
+        setRandom(true);
+        let currentqueue = queue;
+        for (let i = qindex + 1; i < currentqueue.length - 1; i++) {
+            let randomIndex = Math.floor(Math.random() * (currentqueue.length - i - 1)) + (i + 1)
+            let temp = currentqueue[i];
+            currentqueue[i] = currentqueue[randomIndex]
+            currentqueue[randomIndex] = temp;
+        }
+        setRandomQueue(queue => [...currentqueue]);
+    }
+
 
     return (
         <div className="audiobox" onEnded={() => nextSong()}>
@@ -82,15 +99,20 @@ export default function Audiobox(props) {
                 <div className="col-sm-3 left">
                     <CurrentSong song={queue[qindex]} />
                 </div>
-                {/* AUDIO CONTROL */}
+                {/* audio controller */}
                 <div className="col-sm-6 middle">
-                    {/* audio controller */}
                     <div className="row">
                         <div className="col-sm-12 panel">
                             {/* RANDOM */}
-                            <a className="random">
-                                <i class="fad fa-random"></i>
-                            </a>
+                            {!random ?
+                                <a className="random" onClick={() => randomize()}>
+                                    <i class="fad fa-random"></i>
+                                </a>
+                                :
+                                <a className="random randomON" onClick={() => setRandom(false)}>
+                                    <i class="fad fa-random"></i>
+                                </a>
+                            }
                             {/* BACKWARD */}
                             <a className="backward" onClick={() => prevSong()}>
                                 <i class="fas fa-step-backward"></i>
