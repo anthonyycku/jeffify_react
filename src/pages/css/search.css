@@ -71,4 +71,33 @@ label {
 
 #albumresult {
     margin-top: 20px;
+    display: flex;
+}
+
+.artistprof {
+    width: 150px;
+    display: flex;
+
+}
+
+.artistprof Link {
+    color: red;
+}
+
+.artistprof img {
+    width: 150px;
+    height: 175px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#artistname {
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+.artistfind {
+    display: flex;
 }

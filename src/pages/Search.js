@@ -26,6 +26,7 @@ export default function Search(props) {
         window.scrollTo(0, 0)
         getallsongs();
         getallalbums();
+        getallartists();
     }, [])
 
     const getallsongs = () => {
@@ -41,7 +42,9 @@ export default function Search(props) {
     }
 
     const getallartists = () => {
-
+        axios.get("https://jeffify.herokuapp.com/artistsearch").then(response => {
+            setallartists(response.data)
+        })
     }
 
     const handleChange = (event) => {
@@ -51,29 +54,31 @@ export default function Search(props) {
             let resultsongs = allsongs.filter(result => result.song.toLowerCase().includes(lowerCaseSearch));
             setfilteredsongs(resultsongs);
             if (resultsongs.length > 0) {
-                setsongresult(true);
+                setsongresult(x => true);
             } else {
-                setsongresult(false)
+                setsongresult(x => false)
             }
             let resultalbums = allalbums.filter(result => result.name.toLowerCase().includes(lowerCaseSearch))
             setfilteredalbums(resultalbums);
             if (resultalbums.length > 0) {
-                setalbumresult(true)
+                setalbumresult(x => true)
             } else {
-                setalbumresult(false)
+                setalbumresult(x => false)
             }
-
-            if (filteredsongs.length == 0 && filteredalbums.length == 0) {
-                setnoresult(true);
+            let resultartists = allartists.filter(result => result.artist.toLowerCase().includes(lowerCaseSearch))
+            setfilteredartists(resultartists);
+            if (resultartists.length > 0) {
+                setartistresult(x => true)
             } else {
-                setnoresult(false);
+                setartistresult(x => false)
             }
         } else {
-            setfilteredsongs([]);
-            setfilteredalbums([]);
+            setfilteredsongs(x => []);
+            setfilteredalbums(x => []);
+            setfilteredartists(x => []);
             setsongresult(false)
             setalbumresult(false)
-            setnoresult(false)
+            setartistresult(false)
         }
 
     }
@@ -92,7 +97,7 @@ export default function Search(props) {
         props.setCurrentAlbum(album)
     }
 
-    if (!allsongs || !allalbums) {
+    if (!allsongs || !allalbums || !allartists) {
         return <Loader />
     } else {
         return (
@@ -109,14 +114,6 @@ export default function Search(props) {
                         />
                     </div>
                 </div>
-                {noresult ?
-                    <div className="row noresult">
-                        <div className="col-sm-12">
-                            <h3>No results match your input.</h3>
-                        </div>
-                    </div>
-                    :
-                    null}
 
                 <div className="row songalbumrow">
                     {/* SONG FIND */}
@@ -155,11 +152,11 @@ export default function Search(props) {
 
                     {/* ALBUM FIND */}
                     {albumresult ?
-                        <div id="albumresult">
+                        <div id="albumresult" className="row">
                             <div className="artistsongtitle">
                                 <h3>Albums</h3>
                             </div>
-                            <div className="col-sm-10 albumfind">
+                            <div className="col-sm-10 songfind">
                                 {/* ALBUM CODE */}
                                 {filteredalbums.map(result => {
                                     return <div key={result.id} className="album">
@@ -193,20 +190,30 @@ export default function Search(props) {
                         null
                     }
                 </div>
+
                 {/* ARTIST FIND */}
 
                 {artistresult ?
                     <div className="row artistrow">
-                        <hr />
-                        <div className="col-sm-6">
-                            <div className="artistsongtitle">
-                                <h3>Artists</h3>
-                            </div>
-
+                        <div className="artistsongtitle">
+                            <h3 style={{ paddingLeft: "20px" }}>Artists</h3>
+                        </div>
+                        <div className="col-sm-10 albumfind artistfind">
+                            {filteredartists.map(result => {
+                                return (
+                                    <div className="artistprof album">
+                                        <Link id="artistlink" to="/artist" onClick={() => props.setArtistID(result.id)} style={{ textDecoration: "none" }}>
+                                            <img src={result.image} alt="" />
+                                            <p id="artistname">{result.artist}</p>
+                                        </Link>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                     :
                     null}
+
             </div>
         )
     }
