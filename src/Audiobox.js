@@ -110,7 +110,11 @@ export default function Audiobox(props) {
             {/* QUEUE MODAL */}
             <div id="modal">
                 {queueUp ?
-                    <QueueModal setQueue={setQueue} queue={queue} currentSong={queue[qindex]} />
+                    <QueueModal
+                        setQueue={setQueue}
+                        queue={queue}
+                        currentSong={queue[qindex]}
+                        setqindex={setqindex} />
                     :
                     null
                 }

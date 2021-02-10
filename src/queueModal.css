@@ -1,6 +1,6 @@
 .queuemodal {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.721);
+    background-color: rgba(0, 0, 0, 0.865);
     z-index: 4;
     height: 500px;
     right: 1%;
@@ -25,10 +25,15 @@
 
 .queueSong {
     color: white;
+    letter-spacing: 0.02em;
+    font-weight: 800;
+    margin-bottom: 10px;
 }
 
 .fa-caret-right {
     color: rgb(0, 222, 0);
+    font-size: 1.3em;
+    padding-right: 10px;
 }
 
 .queuelist h3 {
@@ -55,4 +60,20 @@
         transform: translateY(300px);
         opacity: 0;
     }
+}
+
+.queuelist hr {
+    color: white;
+    height: 2px;
+}
+
+.queueSong .fa-play-circle {
+    color: white;
+    float: right;
+    font-size: 1.4em;
+    padding-left: 10px;
+}
+
+.queueSong .fa-play-circle:hover {
+    color: rgb(1, 211, 1);
 }
