@@ -77,3 +77,7 @@
 .queueSong .fa-play-circle:hover {
     color: rgb(1, 211, 1);
 }
+
+.queueplay {
+    float: right;
+}

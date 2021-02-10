@@ -114,7 +114,8 @@ export default function Audiobox(props) {
                         setQueue={setQueue}
                         queue={queue}
                         currentSong={queue[qindex]}
-                        setqindex={setqindex} />
+                        setqindex={setqindex}
+                        qindex={qindex} />
                     :
                     null
                 }
