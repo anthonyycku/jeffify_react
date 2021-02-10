@@ -41,7 +41,7 @@ export default function Audiobox(props) {
             } else {
                 if (qindex !== queue.length - 1) {
                     if (random) {
-                        setQueue(queue => [...randomQueue])
+                        setQueue(randomQueue)
                     }
                     setqindex(qindex + 1);
                 } else {
@@ -93,7 +93,6 @@ export default function Audiobox(props) {
             <audio id="audio">
                 <source id="source" src="" type="audio/mp3" />
             </audio>
-
             <div className="row">
                 {/* LEFT BOX */}
                 <div className="col-sm-3 left">
@@ -157,6 +156,7 @@ export default function Audiobox(props) {
                     </div>
                 </div>
                 {/* RIGHT BOX */}
+                <button className="queue">Queue ({queue.length})</button>
                 <div className="col-sm-3 right">
                     <VolumeBox />
                 </div>
