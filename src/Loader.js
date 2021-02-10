@@ -8,7 +8,8 @@ export default function Loader() {
                 <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
             <div className="loadingText">
-                <h4>Heroku / API is loading...</h4>
+                <h4>Heroku is loading...</h4>
+                <h5>This could take a while!</h5>
             </div>
         </div>
     )

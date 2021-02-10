@@ -101,3 +101,27 @@ label {
 .artistfind {
     display: flex;
 }
+
+/* Animations */
+
+#songresult {
+    animation: fadein 2s;
+}
+
+#albumresult {
+    animation: fadein 2.5s;
+}
+
+.artistrow {
+    animation: fadein 3s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}

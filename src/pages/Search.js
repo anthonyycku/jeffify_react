@@ -8,8 +8,6 @@ import Loader from "../Loader";
 export default function Search(props) {
     const { setQueue, song } = props;
 
-    const [noresult, setnoresult] = useState();
-
     const [allsongs, setallsongs] = useState();
     const [allalbums, setallalbums] = useState();
     const [allartists, setallartists] = useState();
