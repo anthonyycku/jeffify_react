@@ -11,11 +11,12 @@ import Bar from "./Bar"
 
 
 export default function Audiobox(props) {
-    const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
+    // const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
     const { queue, setQueue, qindex, setqindex, repeat, setRepeat, random, setRandom } = props;
     const [randomQueue, setRandomQueue] = useState();
     const [queueUp, setQueueUp] = useState();
 
+    const { currentTime, duration, playing, setPlaying, setClickedTime } = props;
 
 
     useEffect(() => {
@@ -101,9 +102,9 @@ export default function Audiobox(props) {
     }
 
     return (
-        <div className="audiobox" onEnded={() => nextSong()}>
+        <div className="audiobox" >
             {/* audio */}
-            <audio id="audio">
+            <audio id="audio" onEnded={() => nextSong()}>
                 <source id="source" src="" type="audio/mp3" />
             </audio>
 

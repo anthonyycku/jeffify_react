@@ -10,8 +10,11 @@ import Search from "./pages/Search";
 import Songs from "./pages/Songs";
 import Nav from "./Nav";
 import Audiobox from "./Audiobox"
+import AudioPlayer from "./AudioPlayer"
 
 function App() {
+  const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
+
   const [page, setPage] = useState("home");
   const [queue, setQueue] = useState([]);
   const [qindex, setqindex] = useState(0);
@@ -23,9 +26,13 @@ function App() {
   const [artistID, setArtistID] = useState();
 
 
+
+
   return (
     <div className="container-fluid">
+
       <Router>
+
         <Nav setPage={setPage} page={page} />
 
         <Audiobox
@@ -36,7 +43,13 @@ function App() {
           repeat={repeat}
           setRepeat={setRepeat}
           random={random}
-          setRandom={setRandom} />
+          setRandom={setRandom}
+          currentTime={currentTime}
+          duration={duration}
+          playing={playing}
+          setPlaying={setPlaying}
+          setClickedTime={setClickedTime}
+        />
 
         <div className="bodyContainer">
 
@@ -63,6 +76,8 @@ function App() {
               setQueue={setQueue}
               setqindex={setqindex}
               song={queue[qindex]}
+              queue={queue}
+              setPlaying={setPlaying}
             />} />
 
             <Route path="/songs"
@@ -74,6 +89,7 @@ function App() {
                 setqindex={setqindex}
                 song={queue[qindex]}
                 queue={queue}
+                setPlaying={setPlaying}
               />} />
 
             <Route path="/artist"
@@ -85,6 +101,8 @@ function App() {
                 setQueue={setQueue}
                 setqindex={setqindex}
                 song={queue[qindex]}
+                queue={queue}
+                setPlaying={setPlaying}
               />} />
             <Redirect from="/" to="/home" />
 

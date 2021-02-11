@@ -7,7 +7,7 @@ import Options from "./options/Options"
 
 
 export default function Search(props) {
-    const { setQueue, song } = props;
+    const { queue, setQueue, song, setPlaying } = props;
 
     const [allsongs, setallsongs] = useState();
     const [allalbums, setallalbums] = useState();
@@ -168,7 +168,7 @@ export default function Search(props) {
                                                 <i className="fas fa-ellipsis-h"></i>
                                             </div>
                                             <div id={"options" + index} className="options-list">
-                                                <Options />
+                                                <Options result={result} queue={queue} setPlaying={setPlaying} />
                                             </div>
                                         </div>
                                     </div>
