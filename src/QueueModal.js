@@ -17,17 +17,18 @@ export default function QueueModal(props) {
                     <hr />
                     {queue.map((result, index) => {
                         return <div className="queueSong">
-                            {currentSong.song === result.song ?
-                                <div>
-                                    <i class="fas fa-caret-right"></i>
+                            {qindex === index ?
+                                <div style={{ color: "rgb(1, 211, 1)" }}>
                                     {result.song}
-                                    <i class="far fa-play-circle"></i>
+                                    <div className="queueplay">
+                                        <i class="fas fa-volume-up"></i>
+                                    </div>
                                 </div>
                                 :
                                 <div>
                                     {result.song}
                                     <div className="queueplay" onClick={() => setSong(index)}>
-                                        <i class="far fa-play-circle"></i>
+                                        <i className="far fa-play-circle"></i>
                                     </div>
                                 </div>
                             }

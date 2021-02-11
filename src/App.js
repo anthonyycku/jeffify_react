@@ -18,7 +18,6 @@ function App() {
   const [repeat, setRepeat] = useState();
   const [random, setRandom] = useState();
 
-
   const [currentAlbum, setCurrentAlbum] = useState();
   const [albumID, setAlbumID] = useState();
   const [artistID, setArtistID] = useState();
@@ -38,6 +37,7 @@ function App() {
           setRepeat={setRepeat}
           random={random}
           setRandom={setRandom} />
+
         <div className="bodyContainer">
 
           <Switch>
@@ -73,6 +73,7 @@ function App() {
                 setQueue={setQueue}
                 setqindex={setqindex}
                 song={queue[qindex]}
+                queue={queue}
               />} />
 
             <Route path="/artist"

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/search.css"
 import Loader from "../Loader";
+import Options from "./options/Options"
 
 
 export default function Search(props) {
@@ -95,6 +96,28 @@ export default function Search(props) {
         props.setCurrentAlbum(album)
     }
 
+    const activateOptions = (index) => {
+
+        if (!document.getElementById(index).classList.contains("showOptions")) {
+            document.getElementById(index).classList.add("showOptions");
+            let optionsID = document.getElementById(index);
+            let options = document.getElementsByClassName("options-list");
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].classList.contains("showOptions") && options[i] !== optionsID) {
+                    options[i].classList.remove("showOptions");
+                }
+            }
+        } else {
+            document.getElementById(index).classList.remove("showOptions");
+            let options = document.getElementsByClassName("options-list");
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].classList.contains("showOptions")) {
+                    options[i].classList.remove("showOptions");
+                }
+            }
+        }
+    }
+
     if (!allsongs || !allalbums || !allartists) {
         return <Loader />
     } else {
@@ -122,22 +145,31 @@ export default function Search(props) {
                             </div>
                             <div className="col-sm-10 songfind">
 
-                                {filteredsongs.map(result => {
+                                {filteredsongs.map((result, index) => {
                                     return <div className="row songRow" key={result.id}>
                                         <div className="col-sm-10 song">
 
                                             <div className="songPlay" onClick={() => playClick(result)}>
                                                 <i class="fas fa-play-circle"></i>
                                             </div>
-                                            <p>
-                                                <span style={{ marginLeft: "20px" }}>{result.song} -
+                                            <div>
+                                                <p>
+                                                    <span style={{ marginLeft: "20px" }}>{result.song} -
                                             <span style={{ color: "rgb(121, 121, 121)" }}> {result.artist}</span></span>
-                                                {song && song.song === result.song ?
-                                                    <span className="currentlyplaying"><i class="far fa-volume-up"></i></span>
-                                                    :
-                                                    null
-                                                }
-                                            </p>
+                                                    {song && song.song === result.song ?
+                                                        <span className="currentlyplaying"><i class="far fa-volume-up"></i></span>
+                                                        :
+                                                        null
+                                                    }
+                                                </p>
+                                            </div>
+                                            {/* dots */}
+                                            <div className="options" onClick={() => activateOptions("options" + index)}>
+                                                <i className="fas fa-ellipsis-h"></i>
+                                            </div>
+                                            <div id={"options" + index} className="options-list">
+                                                <Options />
+                                            </div>
                                         </div>
                                     </div>
                                 })}
