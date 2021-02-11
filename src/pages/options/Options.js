@@ -1,12 +1,16 @@
 import "../css/songs.css"
 
 export default function Options(props) {
-    const { setPlaying, queue, result } = props;
+    const { setPlaying, queue, result, setCurrentAlbum } = props;
 
     const handleClick = () => {
         let newQ = queue;
         newQ.push(result);
         setPlaying(true);
+
+        if (queue.length === 1) {
+            setCurrentAlbum(result.album);
+        }
 
         if (queue.length === 1) {
             let audio = document.getElementById("audio");

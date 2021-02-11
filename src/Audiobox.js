@@ -12,7 +12,7 @@ import Bar from "./Bar"
 
 export default function Audiobox(props) {
     // const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
-    const { queue, setQueue, qindex, setqindex, repeat, setRepeat, random, setRandom } = props;
+    const { queue, setQueue, qindex, setqindex, repeat, setRepeat, random, setRandom, setCurrentAlbum } = props;
     const [randomQueue, setRandomQueue] = useState();
     const [queueUp, setQueueUp] = useState();
 
@@ -32,6 +32,9 @@ export default function Audiobox(props) {
     }, [queue, qindex])
 
     const nextSong = () => {
+        if (qindex < queue.length - 1) {
+            setCurrentAlbum(queue[qindex + 1].album)
+        }
         if (queue.length === 1) {
             if (!repeat) {
                 setPlaying(false);
@@ -58,6 +61,7 @@ export default function Audiobox(props) {
     const prevSong = () => {
         if (qindex !== 0 && currentTime < 3) {
             setqindex(qindex - 1);
+            setCurrentAlbum(queue[qindex - 1].album)
         } else {
             let audio = document.getElementById("audio");
             audio.currentTime = 0;
@@ -69,6 +73,7 @@ export default function Audiobox(props) {
         if (!repeat) {
             if (qindex !== queue.length - 1) {
                 setqindex(qindex + 1);
+                setCurrentAlbum(queue[qindex + 1].album)
             } else {
                 audio.currentTime = audio.duration;
             }
@@ -116,7 +121,8 @@ export default function Audiobox(props) {
                         queue={queue}
                         currentSong={queue[qindex]}
                         setqindex={setqindex}
-                        qindex={qindex} />
+                        qindex={qindex}
+                        setCurrentAlbum={setCurrentAlbum} />
                     :
                     null
                 }

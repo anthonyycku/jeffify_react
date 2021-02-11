@@ -1,12 +1,13 @@
 import "./queueModal.css"
 
 export default function QueueModal(props) {
-    const { setQueue, queue, currentSong, qindex, setqindex } = props;
+    const { setQueue, queue, currentSong, qindex, setqindex, setCurrentAlbum } = props;
 
-    const setSong = (index) => {
+    const setSong = (result, index) => {
         if (index !== qindex) {
             setqindex(index)
         }
+        setCurrentAlbum(result.album);
     }
     return (
         <div className="queuemodal">
@@ -27,7 +28,7 @@ export default function QueueModal(props) {
                                 :
                                 <div>
                                     {result.song}
-                                    <div className="queueplay" onClick={() => setSong(index)}>
+                                    <div className="queueplay" onClick={() => setSong(result, index)}>
                                         <i className="far fa-play-circle"></i>
                                     </div>
                                 </div>

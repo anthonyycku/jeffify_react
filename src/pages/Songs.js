@@ -9,7 +9,7 @@ import Options from "./options/Options"
 export default function Songs(props) {
     const [songs, setSongs] = useState([])
     const [album, setAlbum] = useState(null)
-    const { queue, setQueue, song, setPlaying } = props;
+    const { queue, setQueue, song, setPlaying, setCurrentAlbum } = props;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -103,7 +103,7 @@ export default function Songs(props) {
                                 <i className="fas fa-ellipsis-h"></i>
                             </div>
                             <div id={"options" + index} className="options-list">
-                                <Options result={result} queue={queue} setPlaying={setPlaying} />
+                                <Options result={result} queue={queue} setPlaying={setPlaying} setCurrentAlbum={setCurrentAlbum} />
                             </div>
                         </div>
                     </div>

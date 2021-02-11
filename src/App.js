@@ -49,6 +49,7 @@ function App() {
           playing={playing}
           setPlaying={setPlaying}
           setClickedTime={setClickedTime}
+          setCurrentAlbum={setCurrentAlbum}
         />
 
         <div className="bodyContainer">
