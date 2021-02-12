@@ -13,6 +13,7 @@ import Nav from "./Nav";
 import Audiobox from "./Audiobox"
 import AudioPlayer from "./AudioPlayer"
 import Signup from "./pages/Signup"
+import Login from "./pages/Login"
 
 function App() {
   const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
@@ -27,7 +28,6 @@ function App() {
   const [albumID, setAlbumID] = useState();
   const [artistID, setArtistID] = useState();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState()
 
 
@@ -75,7 +75,11 @@ function App() {
                 setArtistID={setArtistID}
               />} />
 
-            <Route path="/playlist" component={Playlist} />
+            <Route path="/playlist"
+              render={() => <Playlist
+                user={user}
+              />}
+            />
 
             <Route path="/search" render={() => <Search
               albumID={albumID}
@@ -115,9 +119,15 @@ function App() {
                 setPlaying={setPlaying}
               />} />
 
-            <Route exact path="/signup"
+            <Route path="/signup"
               render={() => <Signup
-                setIsLoggedIn={setIsLoggedIn}
+                setUser={setUser}
+                user={user}
+              />}
+            />
+
+            <Route path="/login"
+              render={() => <Login
                 setUser={setUser}
                 user={user}
               />}

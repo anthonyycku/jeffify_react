@@ -15,7 +15,7 @@ export default function Signup(props) {
 
     const [accounts, setAccounts] = useState();
 
-    const { setIsLoggedIn, setUser, user } = props;
+    const { setUser, user } = props;
 
     useEffect(() => {
         checkUsers();
@@ -110,7 +110,7 @@ export default function Signup(props) {
         return <div className="signupdiv">
             <div className="row">
                 <div className="col-sm-12 signuptitle">
-                    <h1>Sign Up</h1>
+                    <h1>SIGNUP</h1>
                 </div>
             </div>
             <div className="row signupform">

@@ -49,7 +49,7 @@ export default function Nav(props) {
                         :
                         <ul className="signupul">
                             <li onClick={() => props.setPage("signup")} className="userlink"><Link className="link signuplink" to="/signup">Sign-up</Link></li>
-                            <li className="userlink"><Link className="link signuplink">Log-in</Link></li>
+                            <li onClick={() => props.setPage("login")} className="userlink"><Link className="link signuplink" to="/login">Log-in</Link></li>
                         </ul>
                     }
                 </nav>
