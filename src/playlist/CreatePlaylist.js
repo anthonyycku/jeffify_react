@@ -1,23 +1,25 @@
 import "../pages/css/playlist.css"
 import "./css/create.css"
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 export default function CreatePlaylist(props) {
     const { user } = props;
 
     const [playlist, setPlaylist] = useState("");
+    const [success, setSuccess] = useState(false)
+
 
     const handleChange = (event) => {
         setPlaylist(event.target.value)
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault();
         let object = { "name": playlist, "user_id": user.id }
         axios.post("https://jeffify.herokuapp.com/playlists", object).then(response => {
             setPlaylist("");
+
         })
     }
 
@@ -48,9 +50,7 @@ export default function CreatePlaylist(props) {
                             value={playlist} />
                     </div>
                     {playlist.length > 0 ?
-                        <Link to="/playlist">
-                            <input className="btn btn-success createsubmit" type="submit" value="Create" />
-                        </Link>
+                        <Link to="/playlist" onClick={handleSubmit} className="btn btn-success">Create</Link>
                         :
                         <input className="btn btn-success createsubmit" type="submit" value="Create" />
                     }
