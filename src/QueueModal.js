@@ -3,6 +3,13 @@ import "./queueModal.css"
 export default function QueueModal(props) {
     const { setQueue, queue, currentSong, qindex, setqindex, setCurrentAlbum } = props;
 
+    const clearq = () => {
+        setQueue([]);
+        setqindex(0);
+        setCurrentAlbum();
+        document.getElementById("audio").src = "";
+    }
+
     const setSong = (result, index) => {
         if (index !== qindex) {
             setqindex(index)
@@ -14,7 +21,10 @@ export default function QueueModal(props) {
 
             <div className="row">
                 <div className="col-sm-12 queuelist">
-                    <h3>Queue</h3>
+                    <div className="queuetitle">
+                        <h3>Queue</h3>
+                        <button onClick={clearq} className="clearq btn btn-danger">Clear</button>
+                    </div>
                     <hr />
                     {queue.map((result, index) => {
                         return <div className="queueSong">

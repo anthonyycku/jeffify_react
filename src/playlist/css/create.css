@@ -1,0 +1,23 @@
+.createplaylist h1 {
+    color: rgb(0, 211, 0);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+#create {
+    background-color: black;
+    border: none;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    font-size: 1.2em;
+    max-width: 400px;
+    caret-color: rgb(1, 213, 1);
+    color: white;
+    text-align: center;
+}
+
+.create-playlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

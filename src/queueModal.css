@@ -82,3 +82,17 @@
     float: right;
     padding-left: 10px;
 }
+
+.queuetitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.clearq {
+    margin-top: 5px;
+    font-weight: 800;
+    font-size: 1em;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}

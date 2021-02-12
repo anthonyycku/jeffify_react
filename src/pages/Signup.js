@@ -68,6 +68,7 @@ export default function Signup(props) {
             setUsername("");
             setPassword("");
             setConfirm("");
+            checkUsers();
         } else {
             setUserExists(true);
             setWrongPassword(false);

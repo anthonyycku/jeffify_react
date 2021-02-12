@@ -14,6 +14,7 @@ import Audiobox from "./Audiobox"
 import AudioPlayer from "./AudioPlayer"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
+import CreatePlaylist from "./playlist/CreatePlaylist"
 
 function App() {
   const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
@@ -29,6 +30,29 @@ function App() {
   const [artistID, setArtistID] = useState();
 
   const [user, setUser] = useState()
+
+  useEffect(() => {
+    window.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (document.getElementsByClassName("showOptions").length > 0) {
+        if (e.target.className !== "list-group-item" && e.target.className !== "fas fa-ellipsis-h") {
+          document.getElementsByClassName("showOptions")[0].classList.remove("showOptions")
+        }
+      }
+    })
+
+    return () => {
+      window.removeEventListener("click", (e) => {
+        e.stopPropagation();
+        if (document.getElementsByClassName("showOptions").length > 0) {
+          if (e.target.className !== "list-group-item" && e.target.className !== "fas fa-ellipsis-h") {
+            document.getElementsByClassName("showOptions")[0].classList.remove("showOptions")
+          }
+        }
+      })
+    }
+
+  }, [])
 
 
 
@@ -78,6 +102,7 @@ function App() {
             <Route path="/playlist"
               render={() => <Playlist
                 user={user}
+                setPage={setPage("playlist")}
               />}
             />
 
@@ -129,6 +154,12 @@ function App() {
             <Route path="/login"
               render={() => <Login
                 setUser={setUser}
+                user={user}
+              />}
+            />
+
+            <Route path="/createplaylist"
+              render={() => <CreatePlaylist
                 user={user}
               />}
             />
