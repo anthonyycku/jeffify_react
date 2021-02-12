@@ -97,3 +97,19 @@ li {
     display: flex;
     justify-content: center;
 }
+
+.signupul {
+    position: absolute;
+    bottom: 100px;
+    letter-spacing: 0.05em;
+    font-size: 0.8em;
+    margin: 0;
+}
+
+.signuplink {
+    margin: 0;
+}
+
+.userlink {
+    margin: 0;
+}

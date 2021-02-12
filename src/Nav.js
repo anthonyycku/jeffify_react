@@ -37,6 +37,11 @@ export default function Nav(props) {
                         <hr style={{ color: "white" }} />
                         <li><Link to="/createlist" className="link playlist">Create Playlist</Link></li>
                     </ul>
+
+                    <ul className="signupul">
+                        <li onClick={() => props.setPage("signup")} className="userlink"><Link className="link signuplink" to="/signup">Sign-up</Link></li>
+                        <li className="userlink"><Link className="link signuplink">Log-in</Link></li>
+                    </ul>
                 </nav>
             </div>
         </div>

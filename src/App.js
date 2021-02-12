@@ -3,6 +3,7 @@ import './App.css';
 import { Route, BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 // IMPORT COMPONENTS
+import axios from "axios";
 import Home from "./pages/Home";
 import Artist from "./pages/Artist";
 import Playlist from "./pages/Playlist";
@@ -11,6 +12,7 @@ import Songs from "./pages/Songs";
 import Nav from "./Nav";
 import Audiobox from "./Audiobox"
 import AudioPlayer from "./AudioPlayer"
+import Signup from "./pages/Signup"
 
 function App() {
   const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
@@ -25,6 +27,8 @@ function App() {
   const [albumID, setAlbumID] = useState();
   const [artistID, setArtistID] = useState();
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({})
 
 
 
@@ -105,6 +109,14 @@ function App() {
                 queue={queue}
                 setPlaying={setPlaying}
               />} />
+
+            <Route exact path="/signup"
+              render={() => <Signup
+                setIsLoggedIn={setIsLoggedIn}
+                setUser={setUser}
+              />}
+            />
+
             <Redirect from="/" to="/home" />
 
           </Switch>

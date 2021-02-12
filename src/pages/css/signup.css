@@ -1,0 +1,78 @@
+*:focus {
+    outline: none;
+}
+
+.signupdiv h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.signuptitle h1 {
+    color: rgb(2, 194, 2);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.input-group-text {
+    background-color: rgb(0, 150, 0);
+    color: white;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    border: none;
+}
+
+#username,
+#password,
+#confirm {
+    background-color: black;
+    caret-color: rgb(0, 227, 0);
+    color: white;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    border: none;
+    max-width: 300px;
+}
+
+form {
+    margin-top: 30px;
+}
+
+.input-group-text {
+    min-width: 110px;
+}
+
+.btn-success {
+    background-color: rgb(0, 155, 0);
+    font-weight: 800;
+    border-radius: 15px;
+    width: 300px;
+}
+
+.alreadyExists {
+    color: red;
+    margin-top: 20px;
+}
+
+.formcolumn {
+    display: flex;
+    justify-content: center;
+}
+
+.name-exists {
+    display: flex;
+    justify-content: center;
+}
+
+.wrong-password {
+    display: flex;
+    justify-content: center;
+}
+
+.invalid-user {
+    display: flex;
+    justify-content: center;
+}
+
+.invaliduser {
+    color: red;
+}
