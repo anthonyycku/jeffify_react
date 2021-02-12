@@ -28,7 +28,7 @@ function App() {
   const [artistID, setArtistID] = useState();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState()
 
 
 
@@ -37,7 +37,12 @@ function App() {
 
       <Router>
 
-        <Nav setPage={setPage} page={page} />
+        <Nav
+          setPage={setPage}
+          page={page}
+          user={user}
+          setUser={setUser}
+        />
 
         <Audiobox
           setQueue={setQueue}
@@ -114,6 +119,7 @@ function App() {
               render={() => <Signup
                 setIsLoggedIn={setIsLoggedIn}
                 setUser={setUser}
+                user={user}
               />}
             />
 

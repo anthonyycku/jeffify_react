@@ -1,7 +1,9 @@
 import './App.css';
+import './nav.css'
 import { Route, BrowserRouter as Router, Switch, Link, Redirect } from "react-router-dom";
 
 export default function Nav(props) {
+    const { user, setUser } = props;
 
     const homeStyle = (page) => {
         if (page === "home") {
@@ -38,10 +40,18 @@ export default function Nav(props) {
                         <li><Link to="/createlist" className="link playlist">Create Playlist</Link></li>
                     </ul>
 
-                    <ul className="signupul">
-                        <li onClick={() => props.setPage("signup")} className="userlink"><Link className="link signuplink" to="/signup">Sign-up</Link></li>
-                        <li className="userlink"><Link className="link signuplink">Log-in</Link></li>
-                    </ul>
+                    {user ?
+                        <div className="signupul profile-user">
+                            <p>Signed in as: </p>
+                            <p className="username">{user.username}</p>
+                            <p className="logout" onClick={() => setUser(null)}>Logout</p>
+                        </div>
+                        :
+                        <ul className="signupul">
+                            <li onClick={() => props.setPage("signup")} className="userlink"><Link className="link signuplink" to="/signup">Sign-up</Link></li>
+                            <li className="userlink"><Link className="link signuplink">Log-in</Link></li>
+                        </ul>
+                    }
                 </nav>
             </div>
         </div>

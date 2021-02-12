@@ -15,7 +15,7 @@ export default function Signup(props) {
 
     const [accounts, setAccounts] = useState();
 
-    const { setIsLoggedIn, setUser } = props;
+    const { setIsLoggedIn, setUser, user } = props;
 
     useEffect(() => {
         checkUsers();
@@ -59,7 +59,9 @@ export default function Signup(props) {
 
         if (!exists) {
             let object = { "username": username, "password": password }
-            axios.post("https://jeffify.herokuapp.com/accounts", object);
+            axios.post("https://jeffify.herokuapp.com/accounts", object).then(response => {
+                setUser(response.data)
+            })
             setUserExists(false);
             setWrongPassword(false);
             setInvalidUser(false);
@@ -96,6 +98,14 @@ export default function Signup(props) {
 
     if (!accounts) {
         return <Loader />
+    } else if (user) {
+        return <div className="successPage">
+            <div className="row">
+                <div className="col-sm-12 signuptitle">
+                    <h1>Signed in as: <u>{user.username}</u></h1>
+                </div>
+            </div>
+        </div>
     } else {
         return <div className="signupdiv">
             <div className="row">
