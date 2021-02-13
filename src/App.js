@@ -1,4 +1,4 @@
-import './App.css';
+import './css/App.css';
 // React Router
 import { Route, BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
@@ -6,12 +6,12 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Home from "./pages/Home";
 import Artist from "./pages/Artist";
-import Playlist from "./pages/Playlist";
+import Playlist from "./playlist/Playlist";
 import Search from "./pages/Search";
 import Songs from "./pages/Songs";
-import Nav from "./Nav";
-import Audiobox from "./Audiobox"
-import AudioPlayer from "./AudioPlayer"
+import Nav from "./navigation/Nav";
+import Audiobox from "./audio/Audiobox"
+import AudioPlayer from "./audio/AudioPlayer"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import CreatePlaylist from "./playlist/CreatePlaylist"

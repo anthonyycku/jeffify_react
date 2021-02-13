@@ -1,8 +1,8 @@
-import "./css/playlist.css"
+import './css/playlist.css'
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios";
-import Loader from "../Loader"
+import Loader from "../loader/Loader"
 import PlaylistImage from "./playlistimage/PlaylistImage"
 
 export default function Playlist(props) {

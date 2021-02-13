@@ -1,4 +1,4 @@
-import "./currentsong.css"
+import "./css/currentsong.css"
 
 export default function CurrentSong(props) {
     const { song } = props;

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/search.css"
-import Loader from "../Loader";
+import Loader from "../loader/Loader";
 import Options from "./options/Options"
 
 

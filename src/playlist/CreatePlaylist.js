@@ -1,4 +1,4 @@
-import "../pages/css/playlist.css"
+import "./css/playlist.css"
 import "./css/create.css"
 import axios from "axios"
 import React, { useState, useEffect } from "react"

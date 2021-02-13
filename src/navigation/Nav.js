@@ -1,4 +1,4 @@
-import './App.css';
+import '../css/App.css';
 import './nav.css'
 import { Route, BrowserRouter as Router, Switch, Link, Redirect } from "react-router-dom";
 

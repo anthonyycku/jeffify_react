@@ -1,6 +1,6 @@
 import axios from 'axios';
 import "./css/artist.css";
-import Loader from "../Loader";
+import Loader from "../loader/Loader";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import Options from "./options/Options"

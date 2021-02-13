@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./css/home.css";
-import Loader from '../Loader';
+import Loader from '../loader/Loader';
 
 export default function Home(props) {
     const [albums, setAlbums] = useState([])

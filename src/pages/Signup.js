@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import "./css/signup.css"
-import Loader from "../Loader"
+import Loader from "../loader/Loader"
 
 export default function Signup(props) {
     const [username, setUsername] = useState("");

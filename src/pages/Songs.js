@@ -2,7 +2,7 @@ import axios from "axios";
 import "./css/songs.css"
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Loader from "../Loader"
+import Loader from "../loader/Loader"
 import Options from "./options/Options"
 import ShowPlaylists from "./options/AddPlaylist"
 

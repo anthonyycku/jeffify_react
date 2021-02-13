@@ -2,8 +2,8 @@ import "./css/showplaylists.css"
 import axios from "axios"
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import PlaylistImage from "../playlistimage/PlaylistImage"
-import Loader from "../../Loader"
+import PlaylistImage from "../../playlist/playlistimage/PlaylistImage"
+import Loader from "../../loader/Loader"
 
 export default function AddPlaylist(props) {
     const { user, songID } = props;

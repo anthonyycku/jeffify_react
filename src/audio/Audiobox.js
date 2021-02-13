@@ -1,8 +1,8 @@
-import './App.css';
-import './audiobox.css'
+import '../css/App.css';
+import './css/audiobox.css'
 import React, { useState, useEffect } from "react";
 import VolumeBox from "./VolumeBox"
-import QueueModal from "./QueueModal"
+import QueueModal from "../queue/QueueModal"
 import CurrentSong from "./CurrentSong"
 import AudioPlayer from "./AudioPlayer"
 import Play from "./Play"
