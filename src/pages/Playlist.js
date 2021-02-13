@@ -13,7 +13,9 @@ export default function Playlist(props) {
 
     useEffect(() => {
         if (user) {
-            getUserPlaylist();
+            setTimeout(() => {
+                getUserPlaylist();
+            }, 100)
         }
     }, [reset])
 
