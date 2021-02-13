@@ -7,21 +7,18 @@
 }
 
 .playlistalbum {
-    background-color: rgb(172, 172, 172);
+    background-color: rgb(147, 147, 147);
 }
 
 .playlistHR {
     margin: 0;
 }
 
-.playlistName {
-    background-color: black;
-}
-
 .playlistName p {
     letter-spacing: 0.05em;
+    font-size: 1.2em;
     font-weight: 800;
-    color: rgb(0, 232, 0);
+    color: white;
 }
 
 
@@ -32,7 +29,8 @@
     align-items: center;
     height: 20px;
     left: 40%;
-    bottom: 5px;
+    bottom: -50px;
+    background-color: rgb(184, 184, 184);
 }
 
 .btn-dark:hover {

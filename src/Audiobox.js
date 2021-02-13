@@ -181,7 +181,8 @@ export default function Audiobox(props) {
                     </div>
                     {/* bar */}
                     <div className="progressbar" style={{ color: "white" }} >
-                        {document.getElementById("audio") && document.getElementById("audio").src !== "" ?
+                        {/* {document.getElementById("audio") && document.getElementById("audio").src !== "" ? */}
+                        {queue.length > 0 ?
                             <Bar
                                 currentTime={currentTime}
                                 duration={duration}

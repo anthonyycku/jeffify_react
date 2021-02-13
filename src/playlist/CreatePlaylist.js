@@ -8,7 +8,6 @@ export default function CreatePlaylist(props) {
     const { user } = props;
 
     const [playlist, setPlaylist] = useState("");
-    const [success, setSuccess] = useState(false)
 
 
     const handleChange = (event) => {
@@ -19,7 +18,6 @@ export default function CreatePlaylist(props) {
         let object = { "name": playlist, "user_id": user.id }
         axios.post("https://jeffify.herokuapp.com/playlists", object).then(response => {
             setPlaylist("");
-
         })
     }
 

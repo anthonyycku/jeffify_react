@@ -1,0 +1,56 @@
+.twopics {
+    height: 200px;
+    width: 200px;
+}
+
+.twopics .pic1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100px;
+    width: 100px;
+}
+
+.twopics .pic2 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 0;
+    bottom: 0;
+}
+
+.threepics .pic1,
+.pic2,
+.pic3 {
+    width: 50px;
+    height: 50px;
+}
+
+.fourpics .pic1,
+.fourpics .pic2,
+.fourpics .pic3,
+.fourpics .pic4 {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+}
+
+.playlistalbum {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+}
+
+.playlistalbum:hover {
+    opacity: 0.5;
+}
+
+.playlistalbum img {
+    width: 200px;
+    height: 200px;
+}

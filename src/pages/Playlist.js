@@ -3,26 +3,51 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios";
 import Loader from "../Loader"
+import PlaylistImage from "./playlistimage/PlaylistImage"
 
 export default function Playlist(props) {
     const { user, setPlaylistID } = props;
 
-    const img = "https://icons-for-free.com/download-icon-music-131964784909142833_512.png"
+
     const [playlists, setPlaylists] = useState()
+    const [images, setImages] = useState();
     const [reset, setReset] = useState(false)
 
     useEffect(() => {
         if (user) {
             setTimeout(() => {
                 getUserPlaylist();
-            }, 100)
+            }, 250)
         }
     }, [reset])
 
     const getUserPlaylist = () => {
         axios.get("https://jeffify.herokuapp.com/user_playlists/" + user.id).then(response => {
-
             setPlaylists(response.data);
+            getImages();
+        })
+    }
+
+    const getImages = () => {
+        axios.get("https://jeffify.herokuapp.com/getplaylistpics/" + user.id).then(response => {
+            let images = response.data;
+            let result = {};
+
+            for (let element of images) {
+                if (!result[element.id]) {
+                    result[element.id] = [element.image]
+                } else {
+                    let exists = [...result[element.id]];
+                    if (!exists.includes(element.image)) {
+                        result[element.id].push(element.image)
+                    }
+                }
+            }
+            for (let key in result) {
+                result[key] = result[key].slice(0, 4);
+            }
+
+            setImages(result);
         })
     }
 
@@ -30,13 +55,12 @@ export default function Playlist(props) {
         axios.delete("https://jeffify.herokuapp.com/deleteplaylist/" + id).then(response => {
             setReset(!reset)
         })
-
     }
 
 
     if (!user) {
         return <div className="noentry">Please signup / login to access playlists.</div>
-    } else if (!playlists) {
+    } else if (!playlists || !images) {
         return <Loader />
     } else {
         return <div className="homeContainer">
@@ -53,10 +77,13 @@ export default function Playlist(props) {
             <div className="row albumContainer">
                 <div className="col-sm-9 albumsBox">
                     {playlists.map(result => {
-                        return <div className="album playlistalbum">
+                        return <div className="playlistalbum">
                             <div>
                                 <Link onClick={() => setPlaylistID(result.id)} to="/PlaylistSongs" style={{ cursor: "default" }} className="profilebox">
-                                    <img src={img} className="albumimage" />
+                                    <PlaylistImage
+                                        id={result.id}
+                                        images={images}
+                                    />
                                 </Link>
                             </div>
 
