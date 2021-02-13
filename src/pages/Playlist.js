@@ -8,17 +8,23 @@ export default function Playlist(props) {
 
     const img = "https://icons-for-free.com/download-icon-music-131964784909142833_512.png"
     const [playlists, setPlaylists] = useState([])
+    const [reset, setReset] = useState(false)
 
     useEffect(() => {
         if (user) {
             getUserPlaylist();
         }
-    }, [playlists])
+    }, [playlists, reset])
 
     const getUserPlaylist = () => {
         axios.get("https://jeffify.herokuapp.com/user_playlists/" + user.id).then(response => {
             setPlaylists(response.data);
         })
+    }
+
+    const deletePlaylist = (id) => {
+        axios.delete("https://jeffify.herokuapp.com/deleteplaylist/" + id)
+        setReset(!reset)
     }
 
 
@@ -60,7 +66,7 @@ export default function Playlist(props) {
                             <div className="playlistName">
                                 <p>{result.playlistName}</p>
                             </div>
-
+                            <button onClick={() => deletePlaylist(result.id)} className="btn btn-dark">X</button>
                         </div>
                     })}
                 </div>

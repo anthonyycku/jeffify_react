@@ -22,3 +22,18 @@
     letter-spacing: 0.05em;
     font-weight: 800;
 }
+
+
+
+.btn-dark {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    left: 40%;
+    bottom: 5px;
+}
+
+.btn-dark:hover {
+    background-color: red;
+}
