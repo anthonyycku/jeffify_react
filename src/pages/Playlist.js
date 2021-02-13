@@ -27,8 +27,10 @@ export default function Playlist(props) {
     }
 
     const deletePlaylist = (id) => {
-        axios.delete("https://jeffify.herokuapp.com/deleteplaylist/" + id)
-        setReset(!reset)
+        axios.delete("https://jeffify.herokuapp.com/deleteplaylist/" + id).then(response => {
+            setReset(!reset)
+        })
+
     }
 
 
