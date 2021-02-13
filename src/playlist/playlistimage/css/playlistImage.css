@@ -31,6 +31,12 @@
     height: 100px;
 }
 
+
+.threepics .pic3 {
+    float: left;
+    margin-right: 100px;
+}
+
 .fourpics .pic1,
 .fourpics .pic2,
 .fourpics .pic3,
