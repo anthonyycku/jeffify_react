@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import Options from "./options/Options"
 
 export default function Artist(props) {
-    const { artistID, song, setQueue, queue, setPlaying } = props
+    const { artistID, song, setQueue, queue, setPlaying, setSongID, setCurrentAlbum } = props
 
     const [artist, setArtist] = useState();
     const [songs, setSongs] = useState();
@@ -124,7 +124,14 @@ export default function Artist(props) {
                                 <i className="fas fa-ellipsis-h"></i>
                             </div>
                             <div id={"options" + index} className="options-list">
-                                <Options result={result} queue={queue} setPlaying={setPlaying} />
+                                <Options
+                                    result={result}
+                                    queue={queue}
+                                    setPlaying={setPlaying}
+                                    setCurrentAlbum={setCurrentAlbum}
+                                    songID={result.id}
+                                    setSongID={setSongID}
+                                />
                             </div>
                         </div>
                     </div>

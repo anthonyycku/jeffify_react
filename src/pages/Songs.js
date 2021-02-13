@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../Loader"
 import Options from "./options/Options"
-import ShowPlaylists from "./options/ShowPlaylists"
+import ShowPlaylists from "./options/AddPlaylist"
 
 
 export default function Songs(props) {
@@ -40,8 +40,8 @@ export default function Songs(props) {
 
 
 
-    const activateOptions = (index, songID) => {
-        setSongID(songID)
+    const activateOptions = (index) => {
+
         if (!document.getElementById(index).classList.contains("showOptions")) {
             document.getElementById(index).classList.add("showOptions");
             let optionsID = document.getElementById(index);

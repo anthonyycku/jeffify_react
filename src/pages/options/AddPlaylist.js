@@ -3,7 +3,7 @@ import axios from "axios"
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-export default function ShowPlaylists(props) {
+export default function AddPlaylist(props) {
     const { user, songID } = props;
     const img = "https://icons-for-free.com/download-icon-music-131964784909142833_512.png"
 
@@ -43,7 +43,7 @@ export default function ShowPlaylists(props) {
                 <div className="col-sm-9 albumsBox">
                     {playlists.map(result => {
                         return <div className="album playlistalbum selectPlaylist">
-                            <Link onClick={() => addSong(result.id)} to="/songs" style={{ cursor: "default" }} className="profilebox">
+                            <Link onClick={() => addSong(result.id)} to="/home" style={{ cursor: "default" }} className="profilebox">
                                 <img src={img} className="albumimage" />
                             </Link>
                             <hr className="playlistHR" />

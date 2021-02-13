@@ -7,7 +7,7 @@ import Options from "./options/Options"
 
 
 export default function Search(props) {
-    const { queue, setQueue, song, setPlaying, setCurrentAlbum } = props;
+    const { queue, setQueue, song, setPlaying, setCurrentAlbum, setSongID } = props;
 
     const [allsongs, setallsongs] = useState();
     const [allalbums, setallalbums] = useState();
@@ -97,7 +97,6 @@ export default function Search(props) {
     }
 
     const activateOptions = (index) => {
-
         if (!document.getElementById(index).classList.contains("showOptions")) {
             document.getElementById(index).classList.add("showOptions");
             let optionsID = document.getElementById(index);
@@ -168,7 +167,14 @@ export default function Search(props) {
                                                 <i className="fas fa-ellipsis-h"></i>
                                             </div>
                                             <div id={"options" + index} className="options-list">
-                                                <Options result={result} queue={queue} setPlaying={setPlaying} setCurrentAlbum={setCurrentAlbum} />
+                                                <Options
+                                                    result={result}
+                                                    queue={queue}
+                                                    setPlaying={setPlaying}
+                                                    setCurrentAlbum={setCurrentAlbum}
+                                                    songID={result.id}
+                                                    setSongID={setSongID}
+                                                />
                                             </div>
                                         </div>
                                     </div>

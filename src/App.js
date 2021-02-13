@@ -16,7 +16,7 @@ import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import CreatePlaylist from "./playlist/CreatePlaylist"
 import PlaylistSongs from "./playlist/playlist_songs/PlaylistSongs"
-import ShowPlaylists from "./pages/options/ShowPlaylists"
+import AddPlaylists from "./pages/options/AddPlaylist"
 
 function App() {
   const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
@@ -35,7 +35,7 @@ function App() {
   const [songID, setSongID] = useState();
 
   //Playlist state
-
+  const [playlistID, setPlaylistID] = useState();
 
   // User state
   const [user, setUser] = useState()
@@ -112,6 +112,7 @@ function App() {
               render={() => <Playlist
                 user={user}
                 setPage={setPage("playlist")}
+                setPlaylistID={setPlaylistID}
               />}
             />
 
@@ -126,6 +127,7 @@ function App() {
               song={queue[qindex]}
               queue={queue}
               setPlaying={setPlaying}
+              setSongID={setSongID}
             />} />
 
             <Route path="/songs"
@@ -152,6 +154,7 @@ function App() {
                 song={queue[qindex]}
                 queue={queue}
                 setPlaying={setPlaying}
+                setSongID={setSongID}
               />} />
 
             <Route path="/signup"
@@ -175,11 +178,23 @@ function App() {
             />
 
             <Route path="/playlistsongs"
-              render={() => <PlaylistSongs />}
+              render={() => <PlaylistSongs
+                user={user}
+                albumID={albumID}
+                setArtistID={setArtistID}
+                setCurrentAlbum={setCurrentAlbum}
+                setQueue={setQueue}
+                setqindex={setqindex}
+                song={queue[qindex]}
+                queue={queue}
+                setPlaying={setPlaying}
+                setSongID={setSongID}
+                playlistID={playlistID}
+              />}
             />
 
             <Route path="/selectplaylists"
-              render={() => <ShowPlaylists
+              render={() => <AddPlaylists
                 user={user}
                 songID={songID}
               />}

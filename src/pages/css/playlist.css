@@ -7,7 +7,7 @@
 }
 
 .playlistalbum {
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(172, 172, 172);
 }
 
 .playlistHR {
@@ -21,6 +21,7 @@
 .playlistName p {
     letter-spacing: 0.05em;
     font-weight: 800;
+    color: rgb(0, 232, 0);
 }
 
 
