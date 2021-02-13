@@ -4,12 +4,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../Loader"
 import Options from "./options/Options"
+import ShowPlaylists from "./options/ShowPlaylists"
 
 
 export default function Songs(props) {
     const [songs, setSongs] = useState([])
     const [album, setAlbum] = useState(null)
-    const { queue, setQueue, song, setPlaying, setCurrentAlbum } = props;
+
+    const { queue, setQueue, song, setPlaying, setCurrentAlbum, setSongID } = props;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -36,8 +38,10 @@ export default function Songs(props) {
         props.setqindex(0);
     }
 
-    const activateOptions = (index) => {
 
+
+    const activateOptions = (index, songID) => {
+        setSongID(songID)
         if (!document.getElementById(index).classList.contains("showOptions")) {
             document.getElementById(index).classList.add("showOptions");
             let optionsID = document.getElementById(index);
@@ -103,11 +107,17 @@ export default function Songs(props) {
                                 <i className="fas fa-ellipsis-h"></i>
                             </div>
                             <div id={"options" + index} className="options-list">
-                                <Options result={result} queue={queue} setPlaying={setPlaying} setCurrentAlbum={setCurrentAlbum} />
+                                <Options
+                                    result={result}
+                                    queue={queue}
+                                    setPlaying={setPlaying}
+                                    setCurrentAlbum={setCurrentAlbum}
+                                    songID={result.id}
+                                    setSongID={setSongID}
+                                />
                             </div>
                         </div>
                     </div>
-
                 })}
             </div>
         )

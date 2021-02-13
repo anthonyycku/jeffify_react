@@ -5,3 +5,20 @@
     font-weight: 700;
     letter-spacing: 0.05em;
 }
+
+.playlistalbum {
+    background-color: rgb(216, 216, 216);
+}
+
+.playlistHR {
+    margin: 0;
+}
+
+.playlistName {
+    background-color: black;
+}
+
+.playlistName p {
+    letter-spacing: 0.05em;
+    font-weight: 800;
+}

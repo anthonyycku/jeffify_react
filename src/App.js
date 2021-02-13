@@ -15,20 +15,29 @@ import AudioPlayer from "./AudioPlayer"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import CreatePlaylist from "./playlist/CreatePlaylist"
+import PlaylistSongs from "./playlist/playlist_songs/PlaylistSongs"
+import ShowPlaylists from "./pages/options/ShowPlaylists"
 
 function App() {
   const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
 
+  //Audio states
   const [page, setPage] = useState("home");
   const [queue, setQueue] = useState([]);
   const [qindex, setqindex] = useState(0);
   const [repeat, setRepeat] = useState();
   const [random, setRandom] = useState();
 
+  //song info state
   const [currentAlbum, setCurrentAlbum] = useState();
   const [albumID, setAlbumID] = useState();
   const [artistID, setArtistID] = useState();
+  const [songID, setSongID] = useState();
 
+  //Playlist state
+
+
+  // User state
   const [user, setUser] = useState()
 
   useEffect(() => {
@@ -129,6 +138,7 @@ function App() {
                 song={queue[qindex]}
                 queue={queue}
                 setPlaying={setPlaying}
+                setSongID={setSongID}
               />} />
 
             <Route path="/artist"
@@ -164,6 +174,16 @@ function App() {
               />}
             />
 
+            <Route path="/playlistsongs"
+              render={() => <PlaylistSongs />}
+            />
+
+            <Route path="/selectplaylists"
+              render={() => <ShowPlaylists
+                user={user}
+                songID={songID}
+              />}
+            />
             <Redirect from="/" to="/home" />
 
           </Switch>
