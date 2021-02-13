@@ -2,22 +2,24 @@ import "./css/playlist.css"
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios";
+import Loader from "../Loader"
 
 export default function Playlist(props) {
     const { user, setPlaylistID } = props;
 
     const img = "https://icons-for-free.com/download-icon-music-131964784909142833_512.png"
-    const [playlists, setPlaylists] = useState([])
+    const [playlists, setPlaylists] = useState()
     const [reset, setReset] = useState(false)
 
     useEffect(() => {
         if (user) {
             getUserPlaylist();
         }
-    }, [playlists, reset])
+    }, [reset])
 
     const getUserPlaylist = () => {
         axios.get("https://jeffify.herokuapp.com/user_playlists/" + user.id).then(response => {
+
             setPlaylists(response.data);
         })
     }
@@ -30,6 +32,8 @@ export default function Playlist(props) {
 
     if (!user) {
         return <div className="noentry">Please signup / login to access playlists.</div>
+    } else if (!playlists) {
+        return <Loader />
     } else {
         return <div className="homeContainer">
             <div className="row">
