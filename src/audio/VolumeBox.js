@@ -5,7 +5,7 @@ export default function VolumeBox(props) {
     const setVolume = () => {
         let audio = document.getElementById("audio");
         let currentVolume = document.getElementById("volume").value;
-        audio.volume = currentVolume / 100
+        audio.volume = currentVolume / 100;
     }
     return (
         <div className="row">
