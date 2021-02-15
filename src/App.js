@@ -40,6 +40,9 @@ function App() {
   // User state
   const [user, setUser] = useState()
 
+  // User history
+  const [lastPage, setLastPage] = useState("/home");
+
   useEffect(() => {
     window.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -106,6 +109,7 @@ function App() {
                 setAlbumID={setAlbumID}
                 setqindex={setqindex}
                 setArtistID={setArtistID}
+                setLastPage={setLastPage}
               />} />
 
             <Route path="/playlist"
@@ -128,6 +132,7 @@ function App() {
               queue={queue}
               setPlaying={setPlaying}
               setSongID={setSongID}
+              setLastPage={setLastPage}
             />} />
 
             <Route path="/songs"
@@ -141,6 +146,7 @@ function App() {
                 queue={queue}
                 setPlaying={setPlaying}
                 setSongID={setSongID}
+                setLastPage={setLastPage}
               />} />
 
             <Route path="/artist"
@@ -155,6 +161,7 @@ function App() {
                 queue={queue}
                 setPlaying={setPlaying}
                 setSongID={setSongID}
+                setLastPage={setLastPage}
               />} />
 
             <Route path="/signup"
@@ -190,6 +197,7 @@ function App() {
                 setPlaying={setPlaying}
                 setSongID={setSongID}
                 playlistID={playlistID}
+                setLastPage={setLastPage}
               />}
             />
 
