@@ -16,6 +16,8 @@ Users can signup/login to access the playlist features, allowing users to create
 
 Users can visit artist's page by clicking on the artist name either under the album name or inside an album. Artist's page will include all songs and albums by the artist, which the user can access.
 
+Users can search for all songs, albums, and artists that exist in the database
+
 Users can interact with the audio control just like any other music player out there!
 
 ### Technical Stack:
