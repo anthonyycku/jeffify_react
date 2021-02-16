@@ -17,7 +17,7 @@ import Login from "./pages/Login"
 import CreatePlaylist from "./playlist/CreatePlaylist"
 import PlaylistSongs from "./playlist/playlist_songs/PlaylistSongs"
 import AddPlaylists from "./pages/options/AddPlaylist"
-//
+// i want more berries
 function App() {
   const { currentTime, setCurrentTime, duration, playing, setPlaying, setClickedTime } = AudioPlayer();
 
