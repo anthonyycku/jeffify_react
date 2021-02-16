@@ -6,7 +6,7 @@ import Options from "../../pages/options/Options"
 import axios from "axios"
 
 export default function PlaylistSongs(props) {
-    const { setqindex, playlistID, user, queue, setQueue, song, setPlaying, setCurrentAlbum, setSongID } = props;
+    const { setLastPage, setqindex, playlistID, user, queue, setQueue, song, setPlaying, setCurrentAlbum, setSongID } = props;
     const [songs, setSongs] = useState([])
     const [playlistInfo, setPlaylistInfo] = useState();
     const [reset, setReset] = useState(false);
@@ -14,10 +14,10 @@ export default function PlaylistSongs(props) {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        setLastPage("/playlistsongs");
         setTimeout(() => {
             getSongs();
         }, 100)
-
         getPlaylistInfo();
 
     }, [reset])

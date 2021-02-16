@@ -17,7 +17,7 @@ export default function Playlist(props) {
         if (user) {
             setTimeout(() => {
                 getUserPlaylist();
-            }, 250)
+            }, 150)
         }
     }, [reset])
 

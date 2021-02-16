@@ -6,7 +6,7 @@ import PlaylistImage from "../../playlist/playlistimage/PlaylistImage"
 import Loader from "../../loader/Loader"
 
 export default function AddPlaylist(props) {
-    const { user, songID } = props;
+    const { user, songID, lastPage } = props;
 
     const [playlists, setPlaylists] = useState([])
     const [images, setImages] = useState();
@@ -48,11 +48,8 @@ export default function AddPlaylist(props) {
     }
 
     const addSong = (playlist_id) => {
-        let object = { "songID": songID, "playlistID": playlist_id }
         axios.post(`https://jeffify.herokuapp.com/addtoplaylist/${songID}/${playlist_id}`)
-            .then(response => {
-                console.log(response.data);
-            })
+            .then(response => { })
     }
 
     if (!user) {
@@ -71,7 +68,7 @@ export default function AddPlaylist(props) {
                 <div className="col-sm-9 albumsBox">
                     {playlists.map(result => {
                         return <div className="playlistalbum selectPlaylist">
-                            <Link onClick={() => addSong(result.id)} to="/home" style={{ cursor: "default" }} className="profilebox">
+                            <Link onClick={() => addSong(result.id)} to={lastPage} style={{ cursor: "default" }} className="profilebox">
                                 <PlaylistImage
                                     id={result.id}
                                     images={images}

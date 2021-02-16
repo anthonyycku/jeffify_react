@@ -205,6 +205,7 @@ function App() {
               render={() => <AddPlaylists
                 user={user}
                 songID={songID}
+                lastPage={lastPage}
               />}
             />
             <Redirect from="/" to="/home" />

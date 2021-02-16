@@ -11,12 +11,13 @@ export default function Songs(props) {
     const [songs, setSongs] = useState([])
     const [album, setAlbum] = useState(null)
 
-    const { queue, setQueue, song, setPlaying, setCurrentAlbum, setSongID } = props;
+    const { setLastPage, queue, setQueue, song, setPlaying, setCurrentAlbum, setSongID } = props;
 
     useEffect(() => {
         window.scrollTo(0, 0);
         getSongs();
         getAlbum();
+        setLastPage("/songs");
     }, [])
 
     const getSongs = () => {

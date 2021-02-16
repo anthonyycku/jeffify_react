@@ -7,7 +7,7 @@ import Options from "./options/Options"
 
 
 export default function Search(props) {
-    const { queue, setQueue, song, setPlaying, setCurrentAlbum, setSongID } = props;
+    const { setLastPage, queue, setQueue, song, setPlaying, setCurrentAlbum, setSongID } = props;
 
     const [allsongs, setallsongs] = useState();
     const [allalbums, setallalbums] = useState();
@@ -26,6 +26,7 @@ export default function Search(props) {
         getallsongs();
         getallalbums();
         getallartists();
+        setLastPage("/search");
     }, [])
 
     const getallsongs = () => {
