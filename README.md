@@ -4,7 +4,7 @@
 
 ## Hello! Thanks for visiting Jeffify!
 
-This is a 2-week project, aiming to showcase Spotify's unique style and its various features including search, playlists, and audio control.
+This is a 2-week project, aiming to showcase Spotify's unique style and its various features including search, playlists, and audio control - All built entirely from scratch!
 
 The application is built upon a many-to-many relational database to allow connections between users, playlists, songs, albums, and artists.
 
