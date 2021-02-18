@@ -28,3 +28,11 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.playlistSuccess {
+    margin-top: 20px;
+    color: rgb(0, 199, 0);
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}

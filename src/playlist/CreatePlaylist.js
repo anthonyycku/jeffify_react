@@ -8,6 +8,7 @@ export default function CreatePlaylist(props) {
     const { user } = props;
 
     const [playlist, setPlaylist] = useState("");
+    const [success, setSuccess] = useState(false);
 
 
     const handleChange = (event) => {
@@ -18,6 +19,7 @@ export default function CreatePlaylist(props) {
         let object = { "name": playlist, "user_id": user.id }
         axios.post("https://jeffify.herokuapp.com/playlists", object).then(response => {
             setPlaylist("");
+            setSuccess(true);
         })
     }
 
@@ -47,9 +49,14 @@ export default function CreatePlaylist(props) {
                         value={playlist} />
                 </div>
                 {playlist.length > 0 ?
-                    <Link to="/playlist" onClick={handleSubmit} className="btn btn-success">Create</Link>
+                    <button onClick={handleSubmit} className="btn btn-success">Create</button>
                     :
                     <button className="btn btn-success createsubmit">Create </button>
+                }
+            </div>
+            <div className="playlistSuccess">
+                {success ?
+                    <p>Success! Check out your new playlist in your library</p> : null
                 }
             </div>
         </div>
